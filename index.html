@@ -115,6 +115,21 @@
   .tip-foot{ padding: 12px 18px 20px; flex-shrink: 0; border-top: 1px solid var(--line); }
   .tip-foot button{ width: 100%; padding: 13px; border-radius: 10px; border: none; background: var(--forest); color: #F6F3EC; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 13.5px; cursor: pointer; }
   .tip-foot button:active{ opacity: 0.8; }
+  .tip-sec{ margin-bottom: 20px; }
+  .tip-sec h4{ font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--maple); margin: 0 0 9px; }
+  .tip-sec p{ font-size: 13px; line-height: 1.6; color: var(--ink); margin: 0 0 8px; }
+  .tip-sec p:last-child{ margin-bottom: 0; }
+  .tip-hero{ background: var(--maple-soft); border-radius: 12px; padding: 13px 14px; font-size: 13.5px; font-weight: 700; color: var(--maple); line-height: 1.55; }
+  .tip-hero span{ display: block; font-weight: 600; font-size: 12px; color: var(--ink-soft); margin-top: 5px; }
+  .tip-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .tip-table td{ padding: 8px 6px 8px 0; border-top: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  .tip-table tr:first-child td{ border-top: none; }
+  .tip-table td.rank{ font-weight: 800; color: var(--maple); white-space: nowrap; width: 62px; }
+  .tip-table td.rank.no{ color: var(--ink-faint); }
+  .tip-table td small{ display: block; color: var(--ink-soft); font-size: 11px; margin-top: 2px; font-weight: 500; }
+  .tip-list{ margin: 0; padding-left: 17px; }
+  .tip-list li{ font-size: 13px; line-height: 1.6; color: var(--ink); margin-bottom: 6px; }
+  .tip-list li:last-child{ margin-bottom: 0; }
   .wx-sum{ display: flex; gap: 8px; margin-bottom: 16px; }
   .wx-sum > div{ flex: 1; background: var(--bg); border-radius: 10px; padding: 10px 12px; }
   .wx-sum .k{ font-size: 10px; font-weight: 800; color: var(--ink-faint); letter-spacing: .04em; }
@@ -444,6 +459,10 @@
           <button class="meal-btn" onclick="openMeal('day3','11.9 (월) · 디즈니')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v6a2 2 0 0 0 4 0V3M9 9v12M17 3c-1.5 3-1.5 6 0 8v10"/></svg>
             오늘 뭐 먹지?
+          </button>
+          <button class="meal-btn" onclick="openDisneyTip()" style="margin-top:8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            디즈니 동선전략
           </button>
         </div>
       </div>
@@ -782,6 +801,51 @@
   </div>
 </div>
 
+<div class="tip-modal" id="disneyTipModal" onclick="if(event.target===this) closeDisneyTip()">
+  <div class="tip-sheet">
+    <div class="tip-head">
+      <h3>디즈니 동선전략</h3>
+      <div class="tip-close" onclick="closeDisneyTip()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </div>
+    </div>
+    <div class="tip-body">
+      <div class="tip-sec">
+        <h4>사전 준비</h4>
+        <p><b>얼리 파크 엔트리(공식 개장 1시간 전 입장)</b>는 디즈니랜드호텔·토이스토리호텔 투숙객 전용입니다. 하얏트 온더번드 숙박이라 무료 혜택은 해당 안 됨 — 비숙박객용 유료 조기입장권이 따로 있지만 가격이 자료마다 달라(¥159~199선) 당일 공식 앱에서 재확인 필요합니다.</p>
+        <p>트론·소어링·주토피아 핫퍼슈트처럼 대기가 긴 인기 어트랙션은 <b>프리미어 액세스</b>(유료 패스트패스, 개별 ¥120~299 또는 세트) 구매를 현장에서 고려하세요.</p>
+      </div>
+      <div class="tip-sec">
+        <h4>입장 직후 — 주토피아 먼저</h4>
+        <div class="tip-hero">개장과 동시에 주토피아존 직행 → 핫퍼슈트 먼저<span>2023년 오픈한 신규존이라 오전에 대기가 가장 빨리 찹니다</span></div>
+      </div>
+      <div class="tip-sec">
+        <h4>키 제한 — 지우(105cm) 기준</h4>
+        <table class="tip-table">
+          <tr><td class="rank">122cm</td><td>트론 라이트사이클 파워런<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
+          <tr><td class="rank">120cm</td><td>렉스 레이서(RC Racer)<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
+          <tr><td class="rank">112cm</td><td>제트팩<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
+          <tr><td class="rank">107cm</td><td>로어링 래피즈<small>105cm으론 2cm 부족 → 라이더 스위치</small></td></tr>
+          <tr><td class="rank no">102cm+</td><td>소어링 오버 더 호라이즌<small>지우 탑승 가능</small></td></tr>
+          <tr><td class="rank no">97cm+</td><td>세븐 드워프 마인 트레인<small>지우 탑승 가능</small></td></tr>
+          <tr><td class="rank no">81cm+</td><td>주토피아: 핫퍼슈트<small>지우 탑승 가능</small></td></tr>
+          <tr><td class="rank no">제한없음</td><td>캐리비안의 해적 · 피터팬 플라이트<small>자료마다 81cm/무제한으로 엇갈리지만 105cm면 어느 쪽이든 탑승 가능</small></td></tr>
+        </table>
+        <p style="margin-top:10px; font-size:11px; color:var(--ink-faint);">키 기준은 2차 자료 기준이며 변동 가능 — 입구 안내판으로 최종 확인하세요.</p>
+      </div>
+      <div class="tip-sec">
+        <h4>라이더 스위치 전략 (공식 서비스, 무료)</h4>
+        <ol class="tip-list">
+          <li>키 미달 어트랙션(트론·렉스레이서·제트팩·로어링래피즈) 입구에서 캐스트에게 "라이더 스위치" 요청</li>
+          <li>한 명이 지우랑 대기 · 나머지가 먼저 탑승</li>
+          <li>교대 — 대기했던 사람은 줄 다시 안 서고 탑승 (세부 진행 방식은 입구 캐스트 확인)</li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip-foot"><button onclick="closeDisneyTip()">닫기</button></div>
+  </div>
+</div>
+
 
 <footer>
   <p>2026 SHANGHAI (2nd) · 개인 여행 일정표</p>
@@ -1105,6 +1169,14 @@
   }
   function closePack(){
     document.getElementById('packModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openDisneyTip(){
+    document.getElementById('disneyTipModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDisneyTip(){
+    document.getElementById('disneyTipModal').classList.remove('open');
     document.body.style.overflow = '';
   }
 
