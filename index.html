@@ -130,6 +130,41 @@
   .tip-list{ margin: 0; padding-left: 17px; }
   .tip-list li{ font-size: 13px; line-height: 1.6; color: var(--ink); margin-bottom: 6px; }
   .tip-list li:last-child{ margin-bottom: 0; }
+
+  /* ---------- DISNEY STRATEGY POPUP ---------- */
+  :root{
+    --mickey:#8E8E93; --garden:#4F9D6E; --fantasy:#B35FB0; --toystory:#E8822A;
+    --adventure:#7A8B4A; --treasure:#2C5DA8; --tomorrow:#2E9BD6; --zootopia:#D9A441;
+  }
+  .dz-progress{ display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 2px 0 10px; }
+  .dz-progress span{ font-size: 11.5px; font-weight: 800; color: var(--ink-soft); }
+  .dz-progress button{ border: none; background: none; font: inherit; font-size: 11px; color: var(--ink-faint); text-decoration: underline; cursor: pointer; padding: 0; }
+  .dz-nl-bar{ display: flex; justify-content: flex-end; margin: 2px 0 8px; }
+  .dz-nl-bar button{ border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 11.5px; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  details.dz-zone-acc{ margin-top: 8px; border: 1px solid var(--line); border-left: 4px solid var(--z); border-radius: 8px; }
+  details.dz-zone-acc summary{ list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 13.5px; font-weight: 800; color: var(--z); }
+  details.dz-zone-acc summary::-webkit-details-marker{ display: none; }
+  details.dz-zone-acc summary::before{ content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); flex-shrink: 0; transition: transform .15s; }
+  details.dz-zone-acc[open] summary::before{ transform: rotate(45deg); }
+  details.dz-zone-acc summary .cnt{ margin-left: auto; font-size: 11px; font-weight: 600; color: var(--ink-faint); }
+  .dz-nl{ list-style: none; margin: 0; padding: 2px 12px 12px; display: grid; gap: 7px; font-size: 12.5px; }
+  .dz-nl li{ display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+  .dz-nl b{ width: 20px; height: 20px; flex: 0 0 20px; border-radius: 50%; background: var(--z); color: #fff; font-size: 10.5px; display: grid; place-content: center; }
+  .dz-nl .nm{ font-weight: 700; color: var(--ink); }
+  .dz-nl .ht{ display: block; font-size: 11px; font-weight: 700; color: var(--maple); margin-top: 1px; }
+  .dz-tl{ list-style: none; margin: 0; padding: 0; position: relative; }
+  .dz-tl::before{ content: ""; position: absolute; left: 11px; top: 4px; bottom: 4px; width: 2px; background: var(--line); }
+  .dz-stop{ position: relative; padding-left: 32px; margin-bottom: 16px; }
+  .dz-stop .dot{ position: absolute; left: 2px; top: 2px; width: 19px; height: 19px; border-radius: 50%; background: var(--z); color: #fff; font-size: 10px; font-weight: 800; display: grid; place-content: center; }
+  .dz-stop .zn{ display: block; font-size: 10.5px; font-weight: 800; color: var(--z); margin-bottom: 2px; }
+  .dz-stop h5{ margin: 0 0 4px; font-size: 13.5px; font-weight: 700; color: var(--ink); }
+  .dz-stop p{ margin: 0 0 8px; font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+  .dz-stop .pack-item{ padding: 8px 0; }
+  .dz-skip{ border: 2px dashed var(--maple); border-radius: 10px; padding: 12px 14px; }
+  .dz-skip ul{ margin: 0; padding-left: 16px; }
+  .dz-skip li{ font-size: 12.5px; line-height: 1.6; color: var(--ink); margin-bottom: 4px; }
+  .dz-stop .tip{ margin-top: 2px; font-size: 11.5px; background: var(--maple-soft); border-radius: 8px; padding: 8px 10px; color: var(--ink); }
+  .nl-note{ color: var(--ink-faint); font-size: 11px; margin: 10px 0 0; line-height: 1.5; }
   .wx-sum{ display: flex; gap: 8px; margin-bottom: 16px; }
   .wx-sum > div{ flex: 1; background: var(--bg); border-radius: 10px; padding: 10px 12px; }
   .wx-sum .k{ font-size: 10px; font-weight: 800; color: var(--ink-faint); letter-spacing: .04em; }
@@ -810,37 +845,132 @@
       </div>
     </div>
     <div class="tip-body">
+      <div class="dz-progress">
+        <span id="dzCount">0 / 0 탑승</span>
+        <button type="button" onclick="dzReset()">체크 초기화</button>
+      </div>
+
       <div class="tip-sec">
         <h4>사전 준비</h4>
-        <p><b>얼리 파크 엔트리(공식 개장 1시간 전 입장)</b>는 디즈니랜드호텔·토이스토리호텔 투숙객 전용입니다. 하얏트 온더번드 숙박이라 무료 혜택은 해당 안 됨 — 비숙박객용 유료 조기입장권이 따로 있지만 가격이 자료마다 달라(¥159~199선) 당일 공식 앱에서 재확인 필요합니다.</p>
-        <p>트론·소어링·주토피아 핫퍼슈트처럼 대기가 긴 인기 어트랙션은 <b>프리미어 액세스</b>(유료 패스트패스, 개별 ¥120~299 또는 세트) 구매를 현장에서 고려하세요.</p>
+        <p>상하이 디즈니랜드는 <b>외부 음식 반입을 제한</b>합니다 — 입장 전 식사를 든든히 하거나 공원 내에서 해결하세요.</p>
+        <p><b>얼리 파크 엔트리(공식 개장 1시간 전 입장)</b>는 디즈니랜드호텔·토이스토리호텔 투숙객 전용입니다. 하얏트 온더번드 숙박이라 무료 혜택은 해당 안 됨 — 비숙박객용 유료 조기입장권도 있지만 가격이 자료마다 달라(¥159~199선) 당일 공식 앱에서 재확인 필요합니다.</p>
       </div>
+
       <div class="tip-sec">
         <h4>입장 직후 — 주토피아 먼저</h4>
         <div class="tip-hero">개장과 동시에 주토피아존 직행 → 핫퍼슈트 먼저<span>2023년 오픈한 신규존이라 오전에 대기가 가장 빨리 찹니다</span></div>
       </div>
-      <div class="tip-sec">
-        <h4>키 제한 — 지우(105cm) 기준</h4>
-        <table class="tip-table">
-          <tr><td class="rank">122cm</td><td>트론 라이트사이클 파워런<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
-          <tr><td class="rank">120cm</td><td>렉스 레이서(RC Racer)<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
-          <tr><td class="rank">112cm</td><td>제트팩<small>지우 탑승 불가 → 라이더 스위치</small></td></tr>
-          <tr><td class="rank">107cm</td><td>로어링 래피즈<small>105cm으론 2cm 부족 → 라이더 스위치</small></td></tr>
-          <tr><td class="rank no">102cm+</td><td>소어링 오버 더 호라이즌<small>지우 탑승 가능</small></td></tr>
-          <tr><td class="rank no">97cm+</td><td>세븐 드워프 마인 트레인<small>지우 탑승 가능</small></td></tr>
-          <tr><td class="rank no">81cm+</td><td>주토피아: 핫퍼슈트<small>지우 탑승 가능</small></td></tr>
-          <tr><td class="rank no">제한없음</td><td>캐리비안의 해적 · 피터팬 플라이트<small>자료마다 81cm/무제한으로 엇갈리지만 105cm면 어느 쪽이든 탑승 가능</small></td></tr>
-        </table>
-        <p style="margin-top:10px; font-size:11px; color:var(--ink-faint);">키 기준은 2차 자료 기준이며 변동 가능 — 입구 안내판으로 최종 확인하세요.</p>
+
+      <div class="tip-sec dz-skip">
+        <h4 style="color:var(--maple); margin-bottom:6px;">오늘은 패스 — 지우(105cm)로는 못 탐</h4>
+        <ul>
+          <li><b>트론 라이트사이클 파워런</b> — 122cm 이상</li>
+          <li><b>렉스 레이서(RC Racer)</b> — 120cm 이상</li>
+          <li><b>제트팩</b> — 112cm 이상</li>
+          <li><b>로어링 래피즈</b> — 107cm 이상 (105cm으론 2cm 부족)</li>
+        </ul>
+        <p style="margin:8px 0 0; font-size:11.5px; color:var(--ink-soft);">전부 <b>라이더 스위치</b>(공식 무료 서비스)로 부모가 교대 탑승 가능 — 입구에서 캐스트에게 요청, 한 명이 지우랑 대기 · 나머지가 먼저 타고 교대 (줄 다시 안 섬)</p>
       </div>
+
+      <div class="dz-zone-colors">
+        <div class="tip-sec">
+          <div class="dz-nl-bar"><button type="button" id="dzAllBtn" onclick="dzToggleAll()">모두 펼치기</button></div>
+          <details class="dz-zone-acc" style="--z:var(--zootopia)"><summary><span>주토피아</span><span class="cnt">1개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">주토피아: 핫퍼슈트</span><span class="ht">81cm 이상 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--tomorrow)"><summary><span>투모로우랜드</span><span class="cnt">2개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">트론 라이트사이클 파워런</span><span class="ht">122cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">제트팩</span><span class="ht">112cm 이상 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--adventure)"><summary><span>어드벤처 아일</span><span class="cnt">2개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">소어링 오버 더 호라이즌</span><span class="ht">102cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">로어링 래피즈</span><span class="ht">107cm 이상 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--treasure)"><summary><span>트레저 코브</span><span class="cnt">1개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">캐리비안의 해적</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--fantasy)"><summary><span>판타지랜드</span><span class="cnt">2개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">세븐 드워프 마인 트레인</span><span class="ht">97cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">피터팬의 비행</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--toystory)"><summary><span>토이 스토리 랜드</span><span class="cnt">1개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">렉스 레이서(RC Racer)</span><span class="ht">120cm 이상 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <p class="nl-note" style="margin-top:10px;">키 기준은 2차 자료 기준이며 변동 가능 — 입구 안내판으로 최종 확인하세요. 키 정보가 없는 항목은 공식 제한을 확인하지 못해 비워뒀습니다.</p>
+        </div>
+      </div>
+
       <div class="tip-sec">
-        <h4>라이더 스위치 전략 (공식 서비스, 무료)</h4>
-        <ol class="tip-list">
-          <li>키 미달 어트랙션(트론·렉스레이서·제트팩·로어링래피즈) 입구에서 캐스트에게 "라이더 스위치" 요청</li>
-          <li>한 명이 지우랑 대기 · 나머지가 먼저 탑승</li>
-          <li>교대 — 대기했던 사람은 줄 다시 안 서고 탑승 (세부 진행 방식은 입구 캐스트 확인)</li>
+        <h4>하루 동선</h4>
+        <ol class="dz-tl" id="dzTimeline">
+          <li class="dz-stop" style="--z:var(--mickey)"><span class="dot">1</span>
+            <span class="zn">미키 애비뉴</span><h5>호텔에서 택시로 이동 · 입장</h5>
+            <p>보안검색 후 입장 — 외부 음식 반입 제한 유의</p>
+          </li>
+          <li class="dz-stop" style="--z:var(--zootopia)"><span class="dot">2</span>
+            <span class="zn">주토피아</span><h5>개장과 동시에 직행</h5>
+            <p>신규존이라 오전에 대기가 가장 빨리 참 — 가장 먼저</p>
+            <label class="pack-item"><input type="checkbox" data-id="d1"><span>주토피아: 핫퍼슈트 (지우 탑승 가능)</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--tomorrow)"><span class="dot">3</span>
+            <span class="zn">투모로우랜드</span><h5>바로 옆 구역으로 이동</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d2"><span>트론 라이트사이클 파워런 (라이더 스위치)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d3"><span>제트팩 (라이더 스위치)</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--adventure)"><span class="dot">4</span>
+            <span class="zn">어드벤처 아일</span><h5>소어링 먼저, 로어링 래피즈는 교대</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d4"><span>소어링 오버 더 호라이즌 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d5"><span>로어링 래피즈 (라이더 스위치)</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--treasure)"><span class="dot">5</span>
+            <span class="zn">트레저 코브</span><h5>캐리비안의 해적</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d6"><span>캐리비안의 해적</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">6</span>
+            <span class="zn">점심</span><h5>디즈니 내에서 (식사값 티켓 포함)</h5>
+            <p>피크 전에 먹기 — 구체 매장은 현장에서 결정</p>
+          </li>
+          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">7</span>
+            <span class="zn">판타지랜드</span><h5>성 뒤쪽으로 이동</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d7"><span>세븐 드워프 마인 트레인 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d8"><span>피터팬의 비행</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--toystory)"><span class="dot">8</span>
+            <span class="zn">토이 스토리 랜드</span><h5>시간 남으면 들르기</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d9"><span>렉스 레이서 (라이더 스위치)</span></label>
+            <div class="tip">줄이 길면 건너뛰고 미키애비뉴 쇼핑 먼저 해도 됩니다.</div>
+          </li>
+          <li class="dz-stop" style="--z:var(--mickey)"><span class="dot">9</span>
+            <span class="zn">미키 애비뉴</span><h5>기념품 쇼핑 후 셔틀로 숙소 복귀</h5>
+            <p>디즈니 프라이빗셔틀 탑승 위치 미리 확인</p>
+          </li>
         </ol>
       </div>
+
+      <div class="tip-sec">
+        <h4>프리미어 액세스 TIP</h4>
+        <p>상하이 디즈니의 유료 줄서기(프리미어 액세스)는 <b>동적 가격제</b>라 어트랙션·날짜·수요에 따라 가격이 계속 바뀝니다. 자료마다 ¥50~2,500까지 편차가 커서 특정 금액을 기준으로 드릴 수 없습니다 — 공식 앱에서 당일 가격을 직접 확인하세요.</p>
+        <ol class="tip-list">
+          <li>오전에는 사지 말고 일정대로(주토피아→투모로우랜드→…) 먼저 돕니다 — 오픈 직후는 줄이 짧습니다.</li>
+          <li>오전 일정을 한 바퀴 돈 뒤, 지우가 직접 탈 수 있는 인기 어트랙션(소어링·세븐드워프마인트레인) 위주로 앱에서 대기시간을 봅니다.</li>
+          <li>대기가 길다 싶으면(가족 기준으로 "탈 만하다" 싶은 선) 그 자리에서 해당 어트랙션만 개별 구매를 고려하세요.</li>
+        </ol>
+        <p class="tip-hero" style="margin-top:10px;">트론·렉스레이서·제트팩처럼 지우가 못 타는 어트랙션은 <b>부모 한 명만 라이더 스위치로 타면 되니</b> 굳이 유료 줄서기를 쓸 필요가 적습니다.<span>유료 줄서기는 지우도 함께 타는 어트랙션 위주로 고려하세요</span></p>
+      </div>
+
+      <p class="nl-note">이 전략은 2차 자료(여행 블로그·공식 안내 페이지 인용)를 기반으로 하며, 공식 룰과 다를 수 있습니다. 방문 전 공식 앱·입구 안내로 다시 확인하세요.</p>
     </div>
     <div class="tip-foot"><button onclick="closeDisneyTip()">닫기</button></div>
   </div>
@@ -1179,6 +1309,40 @@
     document.getElementById('disneyTipModal').classList.remove('open');
     document.body.style.overflow = '';
   }
+  const DZ_KEY = 'disney2026sh';
+  function dzLoad(){ try{ return JSON.parse(localStorage.getItem(DZ_KEY) || '{}'); }catch(e){ return {}; } }
+  function dzSave(s){ try{ localStorage.setItem(DZ_KEY, JSON.stringify(s)); }catch(e){} }
+  function dzBoxes(){ return Array.prototype.slice.call(document.querySelectorAll('#dzTimeline input[type=checkbox]')); }
+  function dzUpdateCount(){
+    const boxes = dzBoxes();
+    const done = boxes.filter(b => b.checked).length;
+    document.getElementById('dzCount').textContent = done + ' / ' + boxes.length + ' 탑승';
+  }
+  function dzInit(){
+    const state = dzLoad();
+    dzBoxes().forEach(b => {
+      b.checked = !!state[b.dataset.id];
+      b.addEventListener('change', function(){
+        const s = dzLoad();
+        s[b.dataset.id] = b.checked;
+        dzSave(s);
+        dzUpdateCount();
+      });
+    });
+    dzUpdateCount();
+  }
+  function dzReset(){
+    dzBoxes().forEach(b => { b.checked = false; });
+    dzSave({});
+    dzUpdateCount();
+  }
+  function dzToggleAll(){
+    const ds = Array.prototype.slice.call(document.querySelectorAll('details.dz-zone-acc'));
+    const open = ds.some(d => !d.open);
+    ds.forEach(d => { d.open = open; });
+    document.getElementById('dzAllBtn').textContent = open ? '모두 접기' : '모두 펼치기';
+  }
+  dzInit();
 
   // 일자별 상세 동선 (미니 경로도)
   const routeIcons = {
