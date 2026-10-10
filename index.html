@@ -152,6 +152,7 @@
   .dz-nl b{ width: 20px; height: 20px; flex: 0 0 20px; border-radius: 50%; background: var(--z); color: #fff; font-size: 10.5px; display: grid; place-content: center; }
   .dz-nl .nm{ font-weight: 700; color: var(--ink); }
   .dz-nl .ht{ display: block; font-size: 11px; font-weight: 700; color: var(--maple); margin-top: 1px; }
+  .dz-nl .ht.ok{ color: var(--forest); }
   .dz-tl{ list-style: none; margin: 0; padding: 0; position: relative; }
   .dz-tl::before{ content: ""; position: absolute; left: 11px; top: 4px; bottom: 4px; width: 2px; background: var(--line); }
   .dz-stop{ position: relative; padding-left: 32px; margin-bottom: 16px; }
@@ -875,40 +876,60 @@
       <div class="dz-zone-colors">
         <div class="tip-sec">
           <div class="dz-nl-bar"><button type="button" id="dzAllBtn" onclick="dzToggleAll()">모두 펼치기</button></div>
-          <details class="dz-zone-acc" style="--z:var(--zootopia)"><summary><span>주토피아</span><span class="cnt">1개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--mickey)"><summary><span>미키 애비뉴</span><span class="cnt">입구</span></summary>
             <ul class="dz-nl">
-              <li><b>1</b><div><span class="nm">주토피아: 핫퍼슈트</span><span class="ht">81cm 이상 탑승 가능</span></div></li>
+              <li><b>·</b><div><span class="nm">입구 · 기념품 매장 (스위트하츠 컨페셔너리 등)</span></div></li>
             </ul>
           </details>
-          <details class="dz-zone-acc" style="--z:var(--tomorrow)"><summary><span>투모로우랜드</span><span class="cnt">2개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--garden)"><summary><span>가든스 오브 이매지네이션</span><span class="cnt">1개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">덤보</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--zootopia)"><summary><span>주토피아</span><span class="cnt">1개</span></summary>
+            <ul class="dz-nl">
+              <li><b>1</b><div><span class="nm">주토피아: 핫퍼슈트</span><span class="ht ok">81cm 이상 탑승 가능</span></div></li>
+            </ul>
+          </details>
+          <details class="dz-zone-acc" style="--z:var(--tomorrow)"><summary><span>투모로우랜드</span><span class="cnt">4개</span></summary>
             <ul class="dz-nl">
               <li><b>1</b><div><span class="nm">트론 라이트사이클 파워런</span><span class="ht">122cm 이상 탑승 가능</span></div></li>
               <li><b>2</b><div><span class="nm">제트팩</span><span class="ht">112cm 이상 탑승 가능</span></div></li>
+              <li><b>3</b><div><span class="nm">버즈 라이트이어 플래닛 레스큐</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
+              <li><b>4</b><div><span class="nm">스티치 인카운터</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
             </ul>
           </details>
-          <details class="dz-zone-acc" style="--z:var(--adventure)"><summary><span>어드벤처 아일</span><span class="cnt">2개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--adventure)"><summary><span>어드벤처 아일</span><span class="cnt">3개</span></summary>
             <ul class="dz-nl">
-              <li><b>1</b><div><span class="nm">소어링 오버 더 호라이즌</span><span class="ht">102cm 이상 탑승 가능</span></div></li>
+              <li><b>1</b><div><span class="nm">소어링 오버 더 호라이즌</span><span class="ht ok">102cm 이상 탑승 가능</span></div></li>
               <li><b>2</b><div><span class="nm">로어링 래피즈</span><span class="ht">107cm 이상 탑승 가능</span></div></li>
+              <li><b>3</b><div><span class="nm">챌린지 트레일스 (캠프 디스커버리)</span></div></li>
             </ul>
           </details>
-          <details class="dz-zone-acc" style="--z:var(--treasure)"><summary><span>트레저 코브</span><span class="cnt">1개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--treasure)"><summary><span>트레저 코브</span><span class="cnt">2개</span></summary>
             <ul class="dz-nl">
-              <li><b>1</b><div><span class="nm">캐리비안의 해적</span></div></li>
+              <li><b>1</b><div><span class="nm">캐리비안의 해적</span><span class="ht ok">81cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">익스플로러 카누</span><span class="ht ok">전 연령 (탑승 시 발이 바닥에 닿아야 함)</span></div></li>
             </ul>
           </details>
-          <details class="dz-zone-acc" style="--z:var(--fantasy)"><summary><span>판타지랜드</span><span class="cnt">2개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--fantasy)"><summary><span>판타지랜드</span><span class="cnt">6개</span></summary>
             <ul class="dz-nl">
-              <li><b>1</b><div><span class="nm">세븐 드워프 마인 트레인</span><span class="ht">97cm 이상 탑승 가능</span></div></li>
-              <li><b>2</b><div><span class="nm">피터팬의 비행</span></div></li>
+              <li><b>1</b><div><span class="nm">세븐 드워프 마인 트레인</span><span class="ht ok">97cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">피터팬의 비행</span><span class="ht ok">81cm 이상 탑승 가능</span></div></li>
+              <li><b>3</b><div><span class="nm">곰돌이 푸의 모험</span></div></li>
+              <li><b>4</b><div><span class="nm">바위동굴 보트투어 (Voyage to the Crystal Grotto)</span></div></li>
+              <li><b>5</b><div><span class="nm">이상한나라의 앨리스 미로</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
+              <li><b>6</b><div><span class="nm">허니팟 스핀</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
             </ul>
           </details>
-          <details class="dz-zone-acc" style="--z:var(--toystory)"><summary><span>토이 스토리 랜드</span><span class="cnt">1개</span></summary>
+          <details class="dz-zone-acc" style="--z:var(--toystory)"><summary><span>토이 스토리 랜드</span><span class="cnt">3개</span></summary>
             <ul class="dz-nl">
               <li><b>1</b><div><span class="nm">렉스 레이서(RC Racer)</span><span class="ht">120cm 이상 탑승 가능</span></div></li>
+              <li><b>2</b><div><span class="nm">슬링키독 지그재그 스핀</span><span class="ht ok">전 연령 탑승 가능</span></div></li>
+              <li><b>3</b><div><span class="nm">우디의 라운드업</span><span class="ht ok">81cm 이상 탑승 가능</span></div></li>
             </ul>
           </details>
-          <p class="nl-note" style="margin-top:10px;">키 기준은 2차 자료 기준이며 변동 가능 — 입구 안내판으로 최종 확인하세요. 키 정보가 없는 항목은 공식 제한을 확인하지 못해 비워뒀습니다.</p>
+          <p class="nl-note" style="margin-top:10px;">키 기준은 상하이 디즈니 공식 안내 페이지 인용 기준(검색 시점)이며 변동 가능 — 입구 안내판으로 최종 확인하세요. 곰돌이 푸의 모험 · 바위동굴 보트투어 · 챌린지 트레일스는 공식 키 제한 정보를 찾지 못해 비워뒀습니다.</p>
         </div>
       </div>
 
@@ -919,40 +940,54 @@
             <span class="zn">미키 애비뉴</span><h5>호텔에서 택시로 이동 · 입장</h5>
             <p>보안검색 후 입장 — 외부 음식 반입 제한 유의</p>
           </li>
-          <li class="dz-stop" style="--z:var(--zootopia)"><span class="dot">2</span>
+          <li class="dz-stop" style="--z:var(--garden)"><span class="dot">2</span>
+            <span class="zn">가든스 오브 이매지네이션</span><h5>입구에서 중앙 광장 통과</h5>
+            <label class="pack-item"><input type="checkbox" data-id="d12"><span>덤보 (지우 탑승 가능)</span></label>
+          </li>
+          <li class="dz-stop" style="--z:var(--zootopia)"><span class="dot">3</span>
             <span class="zn">주토피아</span><h5>개장과 동시에 직행</h5>
             <p>신규존이라 오전에 대기가 가장 빨리 참 — 가장 먼저</p>
             <label class="pack-item"><input type="checkbox" data-id="d1"><span>주토피아: 핫퍼슈트 (지우 탑승 가능)</span></label>
           </li>
-          <li class="dz-stop" style="--z:var(--tomorrow)"><span class="dot">3</span>
+          <li class="dz-stop" style="--z:var(--tomorrow)"><span class="dot">4</span>
             <span class="zn">투모로우랜드</span><h5>바로 옆 구역으로 이동</h5>
             <label class="pack-item"><input type="checkbox" data-id="d2"><span>트론 라이트사이클 파워런 (라이더 스위치)</span></label>
             <label class="pack-item"><input type="checkbox" data-id="d3"><span>제트팩 (라이더 스위치)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d10"><span>버즈 라이트이어 플래닛 레스큐 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d11"><span>스티치 인카운터 (지우 탑승 가능)</span></label>
           </li>
-          <li class="dz-stop" style="--z:var(--adventure)"><span class="dot">4</span>
+          <li class="dz-stop" style="--z:var(--adventure)"><span class="dot">5</span>
             <span class="zn">어드벤처 아일</span><h5>소어링 먼저, 로어링 래피즈는 교대</h5>
             <label class="pack-item"><input type="checkbox" data-id="d4"><span>소어링 오버 더 호라이즌 (지우 탑승 가능)</span></label>
             <label class="pack-item"><input type="checkbox" data-id="d5"><span>로어링 래피즈 (라이더 스위치)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d13"><span>챌린지 트레일스 (캠프 디스커버리)</span></label>
           </li>
-          <li class="dz-stop" style="--z:var(--treasure)"><span class="dot">5</span>
+          <li class="dz-stop" style="--z:var(--treasure)"><span class="dot">6</span>
             <span class="zn">트레저 코브</span><h5>캐리비안의 해적</h5>
-            <label class="pack-item"><input type="checkbox" data-id="d6"><span>캐리비안의 해적</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d6"><span>캐리비안의 해적 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d14"><span>익스플로러 카누 (지우 탑승 가능)</span></label>
           </li>
-          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">6</span>
+          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">7</span>
             <span class="zn">점심</span><h5>디즈니 내에서 (식사값 티켓 포함)</h5>
             <p>피크 전에 먹기 — 구체 매장은 현장에서 결정</p>
           </li>
-          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">7</span>
+          <li class="dz-stop" style="--z:var(--fantasy)"><span class="dot">8</span>
             <span class="zn">판타지랜드</span><h5>성 뒤쪽으로 이동</h5>
             <label class="pack-item"><input type="checkbox" data-id="d7"><span>세븐 드워프 마인 트레인 (지우 탑승 가능)</span></label>
-            <label class="pack-item"><input type="checkbox" data-id="d8"><span>피터팬의 비행</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d8"><span>피터팬의 비행 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d15"><span>곰돌이 푸의 모험</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d16"><span>바위동굴 보트투어</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d17"><span>이상한나라의 앨리스 미로 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d18"><span>허니팟 스핀 (지우 탑승 가능)</span></label>
           </li>
-          <li class="dz-stop" style="--z:var(--toystory)"><span class="dot">8</span>
+          <li class="dz-stop" style="--z:var(--toystory)"><span class="dot">9</span>
             <span class="zn">토이 스토리 랜드</span><h5>시간 남으면 들르기</h5>
             <label class="pack-item"><input type="checkbox" data-id="d9"><span>렉스 레이서 (라이더 스위치)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d19"><span>슬링키독 지그재그 스핀 (지우 탑승 가능)</span></label>
+            <label class="pack-item"><input type="checkbox" data-id="d20"><span>우디의 라운드업 (지우 탑승 가능)</span></label>
             <div class="tip">줄이 길면 건너뛰고 미키애비뉴 쇼핑 먼저 해도 됩니다.</div>
           </li>
-          <li class="dz-stop" style="--z:var(--mickey)"><span class="dot">9</span>
+          <li class="dz-stop" style="--z:var(--mickey)"><span class="dot">10</span>
             <span class="zn">미키 애비뉴</span><h5>기념품 쇼핑 후 셔틀로 숙소 복귀</h5>
             <p>디즈니 프라이빗셔틀 탑승 위치 미리 확인</p>
           </li>
