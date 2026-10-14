@@ -165,6 +165,17 @@
   .dz-skip ul{ margin: 0; padding-left: 16px; }
   .dz-skip li{ font-size: 12.5px; line-height: 1.6; color: var(--ink); margin-bottom: 4px; }
   .dz-stop .tip{ margin-top: 2px; font-size: 11.5px; background: var(--maple-soft); border-radius: 8px; padding: 8px 10px; color: var(--ink); }
+  .dz-mapbox{ position: relative; margin: 8px -18px 0; }
+  .dz-map{ overflow: auto; -webkit-overflow-scrolling: touch; max-height: 70vh; touch-action: pan-x pan-y; background: #0b1426; margin: 0; }
+  .dz-map svg{ display: block; width: 100%; height: auto; max-width: none; }
+  .dz-map text{ font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+  .dz-ctrl{ display: flex; align-items: center; gap: 6px; padding: 8px 18px 0; }
+  .dz-ctrl .sp{ flex: 1; }
+  .dz-rt{ min-height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: #14213D; color: #F5C518; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+  .dz-rt[aria-pressed="false"]{ background: #fff; color: #14213D; box-shadow: inset 0 0 0 2px #14213D; }
+  .dz-ctrl .zb{ width: 34px; height: 34px; border-radius: 9px; border: 0; background: #14213D; color: #F5C518; font-size: 18px; font-weight: 700; line-height: 1; cursor: pointer; }
+  .dz-ctrl .zb.fit{ width: auto; padding: 0 10px; font-size: 11px; font-family: inherit; }
+  .dz-zl{ font-size: 11px; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
   .nl-note{ color: var(--ink-faint); font-size: 11px; margin: 10px 0 0; line-height: 1.5; }
   .wx-sum{ display: flex; gap: 8px; margin-bottom: 16px; }
   .wx-sum > div{ flex: 1; background: var(--bg); border-radius: 10px; padding: 10px 12px; }
@@ -945,6 +956,25 @@
       </div>
 
       <div class="tip-sec">
+        <h4>지도와 동선</h4>
+        <p style="margin:0; font-size:12px; color:var(--ink-soft);">두 손가락이나 + − 로 확대 · 빨간 선은 대략적인 경로 · 번호는 아래 하루 동선 순서</p>
+        <div class="dz-mapbox">
+          <figure class="dz-map" id="dzMap">
+            <svg viewBox="0 0 2000 1188" role="img" aria-label="상하이 디즈니랜드 지도 위 하루 동선: 입구, 주토피아, 세븐 드워프, 판타지랜드, 토이스토리, 투모로우랜드, 어드벤처 아일, 트레저 코브, 가든스를 거쳐 출구"><image href="disney-map.webp" x="0" y="0" width="2000" height="1188"/><g id="dzRoute"><rect x="0" y="0" width="2000" height="1188" fill="#0b1426" opacity=".28"/><g fill="none" stroke-linejoin="round" stroke-linecap="round"><polyline points="958,905 958,700 970,610 1040,575 1100,480 1180,420 1250,330 1300,260 1360,190 1400,160 1340,222 1290,205 1200,215 1090,225 1000,250 900,268 820,300 745,335 680,305 610,290 520,330 440,365 395,415 470,455 540,465 640,475 740,505 850,545 930,585 1040,590 1150,605 1250,640 1290,700 1400,672 1500,640 1625,615 1610,520 1575,440 1567,360 1480,405 1400,455 1335,490 1200,505 1080,525 1018,545 930,520 845,455 880,560 958,640 958,905" stroke="#fff" stroke-width="30"/><polyline points="958,905 958,700 970,610 1040,575 1100,480 1180,420 1250,330 1300,260 1360,190 1400,160 1340,222 1290,205 1200,215 1090,225 1000,250 900,268 820,300 745,335 680,305 610,290 520,330 440,365 395,415 470,455 540,465 640,475 740,505 850,545 930,585 1040,590 1150,605 1250,640 1290,700 1400,672 1500,640 1625,615 1610,520 1575,440 1567,360 1480,405 1400,455 1335,490 1200,505 1080,525 1018,545 930,520 845,455 880,560 958,640 958,905" stroke="#C8281E" stroke-width="17"/><line x1="958" y1="1010" x2="958" y2="905" stroke="#fff" stroke-width="16"/><line x1="958" y1="1010" x2="958" y2="905" stroke="#C8281E" stroke-width="7"/><line x1="1640" y1="55" x2="1400" y2="160" stroke="#fff" stroke-width="16"/><line x1="1640" y1="55" x2="1400" y2="160" stroke="#C8281E" stroke-width="7"/><line x1="1760" y1="165" x2="1340" y2="222" stroke="#fff" stroke-width="16"/><line x1="1760" y1="165" x2="1340" y2="222" stroke="#C8281E" stroke-width="7"/><line x1="1000" y1="85" x2="1090" y2="225" stroke="#fff" stroke-width="16"/><line x1="1000" y1="85" x2="1090" y2="225" stroke="#C8281E" stroke-width="7"/><line x1="560" y1="160" x2="610" y2="290" stroke="#fff" stroke-width="16"/><line x1="560" y1="160" x2="610" y2="290" stroke="#C8281E" stroke-width="7"/><line x1="200" y1="225" x2="420" y2="385" stroke="#fff" stroke-width="16"/><line x1="200" y1="225" x2="420" y2="385" stroke="#C8281E" stroke-width="7"/><line x1="1700" y1="775" x2="1400" y2="672" stroke="#fff" stroke-width="16"/><line x1="1700" y1="775" x2="1400" y2="672" stroke="#C8281E" stroke-width="7"/><line x1="1800" y1="272" x2="1567" y2="360" stroke="#fff" stroke-width="16"/><line x1="1800" y1="272" x2="1567" y2="360" stroke="#C8281E" stroke-width="7"/><line x1="690" y1="610" x2="845" y2="455" stroke="#fff" stroke-width="16"/><line x1="690" y1="610" x2="845" y2="455" stroke="#C8281E" stroke-width="7"/></g><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(964 655) rotate(-82)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1275 295) rotate(-54)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1145 220) rotate(175)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(712 320) rotate(-155)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(418 390) rotate(132)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(795 525) rotate(20)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1270 670) rotate(56)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1618 568) rotate(-99)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1524 382) rotate(153)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(1140 515) rotate(171)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><path d="M-22,-19 L26,0 L-22,19 z" transform="translate(958 772) rotate(90)" fill="#fff" stroke="#C8281E" stroke-width="5" stroke-linejoin="round"/><circle cx="958" cy="905" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="1400" cy="160" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="1340" cy="222" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="1090" cy="225" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="610" cy="290" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="420" cy="385" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="1400" cy="672" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="1567" cy="360" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><circle cx="845" cy="455" r="20" fill="#C8281E" stroke="#fff" stroke-width="6"/><g><rect x="745" y="973.0" width="426" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="958" y="1026" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">1·12 입구·출구</text></g><g><rect x="1498" y="18.0" width="285" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="1640" y="71" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">2 주토피아</text></g><g><rect x="1596" y="128.0" width="329" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="1760" y="181" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">3 세븐드워프</text></g><g><rect x="836" y="48.0" width="329" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="1000" y="101" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">5 판타지랜드</text></g><g><rect x="396" y="123.0" width="329" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="560" y="176" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">6 토이스토리</text></g><g><rect x="14" y="188.0" width="373" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="200" y="241" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">7 투모로우랜드</text></g><g><rect x="1514" y="738.0" width="373" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="1700" y="791" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">9 어드벤처아일</text></g><g><rect x="1622" y="235.0" width="355" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="1800" y="288" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">10 트레저코브</text></g><g><rect x="556" y="573.0" width="267" height="74" rx="37.0" fill="#F5C518" stroke="#14213D" stroke-width="6"/><text x="690" y="626" text-anchor="middle" font-size="44" font-weight="900" fill="#14213D">11 가든스</text></g></g></svg>
+          </figure>
+          <div class="dz-ctrl">
+            <button type="button" class="dz-rt" id="dzRtBtn" aria-pressed="true">동선 끄기</button>
+            <span class="sp"></span>
+            <span class="dz-zl" id="dzZl">100%</span>
+            <button type="button" class="zb" id="dzZout" aria-label="지도 축소">−</button>
+            <button type="button" class="zb" id="dzZin" aria-label="지도 확대">+</button>
+            <button type="button" class="zb fit" id="dzZfit" aria-label="지도 원래 크기">원래</button>
+          </div>
+        </div>
+        <p class="nl-note">지도: TravelChinaGuide (구버전이라 일부 표기가 현재와 다름)</p>
+      </div>
+
+      <div class="tip-sec">
         <h4>하루 동선</h4>
         <ol class="dz-tl" id="dzTimeline">
           <li class="dz-stop" style="--z:var(--mickey)"><span class="dot">1</span>
@@ -1400,6 +1430,57 @@
     document.getElementById('dzAllBtn').textContent = open ? '모두 접기' : '모두 펼치기';
   }
   dzInit();
+  (function(){
+    var box=document.getElementById('dzMap'); if(!box) return;
+    var svg=box.querySelector('svg'), lbl=document.getElementById('dzZl');
+    var s=1, MIN=1, MAX=4;
+    function apply(ns,cx,cy){
+      ns=Math.max(MIN,Math.min(MAX,ns));
+      if(cx==null){cx=box.clientWidth/2;cy=box.clientHeight/2;}
+      var px=(box.scrollLeft+cx)/s, py=(box.scrollTop+cy)/s;
+      s=ns; svg.style.width=(s*100)+'%';
+      box.scrollLeft=px*s-cx; box.scrollTop=py*s-cy;
+      lbl.textContent=Math.round(s*100)+'%';
+    }
+    document.getElementById('dzZin').onclick=function(){apply(s*1.5)};
+    document.getElementById('dzZout').onclick=function(){apply(s/1.5)};
+    document.getElementById('dzZfit').onclick=function(){apply(1)};
+    var d0=0,s0=1,mid=null;
+    function dist(t){var a=t[0],b=t[1];return Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)}
+    box.addEventListener('touchstart',function(e){
+      if(e.touches.length===2){d0=dist(e.touches);s0=s;
+        var r=box.getBoundingClientRect();
+        mid={x:(e.touches[0].clientX+e.touches[1].clientX)/2-r.left,y:(e.touches[0].clientY+e.touches[1].clientY)/2-r.top};}
+    },{passive:true});
+    box.addEventListener('touchmove',function(e){
+      if(e.touches.length===2&&d0){e.preventDefault();apply(s0*dist(e.touches)/d0,mid.x,mid.y);}
+    },{passive:false});
+    box.addEventListener('touchend',function(e){if(e.touches.length<2)d0=0;});
+    box.addEventListener('wheel',function(e){
+      if(e.ctrlKey||e.metaKey){e.preventDefault();var r=box.getBoundingClientRect();apply(s*(e.deltaY<0?1.15:1/1.15),e.clientX-r.left,e.clientY-r.top);}
+    },{passive:false});
+    var lastTap=0;
+    box.addEventListener('touchend',function(e){
+      if(e.changedTouches.length!==1||e.touches.length) return;
+      var now=Date.now();
+      if(now-lastTap<300){var t=e.changedTouches[0],r=box.getBoundingClientRect();apply(s>1.01?1:2,t.clientX-r.left,t.clientY-r.top);lastTap=0;}
+      else lastTap=now;
+    });
+  })();
+  (function(){
+    var b=document.getElementById('dzRtBtn'), g=document.getElementById('dzRoute');
+    if(!b||!g) return;
+    var KEY='disney2026sh-route';
+    function set(on){
+      g.style.display=on?'':'none';
+      b.setAttribute('aria-pressed',on?'true':'false');
+      b.textContent=on?'동선 끄기':'동선 켜기';
+      try{ localStorage.setItem(KEY,on?'1':'0'); }catch(e){}
+    }
+    var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+    set(saved!=='0');
+    b.addEventListener('click',function(){ set(b.getAttribute('aria-pressed')!=='true'); });
+  })();
 
   // 일자별 상세 동선 (미니 경로도)
   const routeIcons = {
