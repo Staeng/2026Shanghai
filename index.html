@@ -176,6 +176,18 @@
   .dz-ctrl .zb{ width: 34px; height: 34px; border-radius: 9px; border: 0; background: #14213D; color: #F5C518; font-size: 18px; font-weight: 700; line-height: 1; cursor: pointer; }
   .dz-ctrl .zb.fit{ width: auto; padding: 0 10px; font-size: 11px; font-family: inherit; }
   .dz-zl{ font-size: 11px; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
+  details.dz-meal, .dz-meal-none{ margin-top: 7px; border: 1px solid var(--line); border-left: 4px solid var(--z); border-radius: 8px; }
+  details.dz-meal summary, .dz-meal-none{ list-style: none; display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 8px; padding: 9px 12px; }
+  details.dz-meal summary{ cursor: pointer; }
+  details.dz-meal summary::-webkit-details-marker{ display: none; }
+  details.dz-meal summary::before{ content: ""; width: 6px; height: 6px; border-right: 2px solid var(--z); border-bottom: 2px solid var(--z); transform: rotate(-45deg); flex-shrink: 0; align-self: center; transition: transform .15s; }
+  details.dz-meal[open] summary::before{ transform: rotate(45deg); }
+  .dz-meal .mn, .dz-meal-none .mn{ font-size: 13px; font-weight: 800; color: var(--ink); }
+  .dz-meal .mz, .dz-meal-none .mz{ font-size: 11px; font-weight: 700; color: var(--z); }
+  details.dz-meal ul{ margin: 0; padding: 0 12px 4px 28px; font-size: 12px; line-height: 1.55; color: var(--ink-soft); }
+  details.dz-meal li{ margin-bottom: 4px; }
+  .dz-meal .mimg{ display: flex; gap: 6px; overflow-x: auto; padding: 4px 12px 12px; -webkit-overflow-scrolling: touch; }
+  .dz-meal .mimg img{ height: 150px; width: auto; border-radius: 6px; border: 1px solid var(--line); display: block; }
   .nl-note{ color: var(--ink-faint); font-size: 11px; margin: 10px 0 0; line-height: 1.5; }
   .wx-sum{ display: flex; gap: 8px; margin-bottom: 16px; }
   .wx-sum > div{ flex: 1; background: var(--bg); border-radius: 10px; padding: 10px 12px; }
@@ -956,6 +968,53 @@
       </div>
 
       <div class="tip-sec">
+        <h4>식사 — 쿠폰 사용 가능 식당</h4>
+        <p style="margin:0 0 6px; font-size:12px; color:var(--ink-soft);">클룩 식사쿠폰 ¥60 × 2 — 아래 지정 식당에서만 · 키즈밀은 만 3~11세 · 식당을 누르면 메뉴판</p>
+        <details class="dz-meal" style="--z:var(--treasure)"><summary><span class="mn">바보사 바운티</span><span class="mz">트레저 코브 · BBQ</span></summary>
+          <ul>
+            <li>고등어구이 코코넛밥 ¥129 · BBQ 폭립 코코넛밥 ¥139 · XO 새우 버섯밥 ¥109 · 저크 치킨다리 흑미밥 ¥109 · 먹물 해물볶음면 ¥119 (음료 포함)</li>
+            <li>키즈밀: 틸라피아 토마토소스 밥 ¥55</li>
+            <li>2인 세트 ¥329 · 4인 세트 ¥459</li>
+          </ul>
+          <div class="mimg"><a href="menu/barbossa-1.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-1.jpg" loading="lazy" alt="바보사 바운티 메뉴 1"></a><a href="menu/barbossa-2.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-2.jpg" loading="lazy" alt="바보사 바운티 메뉴 2"></a><a href="menu/barbossa-3.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-3.jpg" loading="lazy" alt="바보사 바운티 메뉴 3"></a></div>
+        </details>
+        <details class="dz-meal" style="--z:var(--adventure)"><summary><span class="mn">더피와 친구들의 셀러브레이션 홀</span><span class="mz">어드벤처 아일 · 중식</span></summary>
+          <ul>
+            <li>골라 담는 콤보 ¥119 (메인 1 + 반찬 1 + 음료): 치킨다리 소시지밥 · 트러플 소고기 덮밥 · 랍스터 짜장 도삭면(+¥20) · 코코넛 새우밥 · 해물 리본면</li>
+            <li>키즈밀: 생선찜 카레채소 볶음면 ¥55</li>
+            <li>수자우육 ¥108 · 생선구이 ¥138 · 4인 세트 ¥459</li>
+          </ul>
+          <div class="mimg"><a href="menu/duffy-1.jpg" target="_blank" rel="noopener"><img src="menu/duffy-1.jpg" loading="lazy" alt="셀러브레이션 홀 메뉴 1"></a><a href="menu/duffy-2.jpg" target="_blank" rel="noopener"><img src="menu/duffy-2.jpg" loading="lazy" alt="셀러브레이션 홀 메뉴 2"></a><a href="menu/duffy-3.jpg" target="_blank" rel="noopener"><img src="menu/duffy-3.jpg" loading="lazy" alt="셀러브레이션 홀 메뉴 3"></a></div>
+        </details>
+        <details class="dz-meal" style="--z:var(--fantasy)"><summary><span class="mn">피노키오 빌리지 키친</span><span class="mz">판타지랜드 · 피자·파스타</span></summary>
+          <ul>
+            <li>피자: 곰돌이 푸 햄파인애플 ¥109 · 데리야키 치킨 ¥109 · 소고기 단호박 ¥119 · 오리 ¥109</li>
+            <li>크림 베이컨 우동 ¥99 · 매운 해물면 ¥119 · 칠면조다리 볶음밥 ¥119 · 밀라노 돈가스 ¥169 · 전복 차슈볶음밥 ¥109 (음료 포함)</li>
+            <li>키즈밀: 토마토 소고기 양지 밥 ¥55</li>
+          </ul>
+          <div class="mimg"><a href="menu/pinocchio-1.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-1.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴 1"></a><a href="menu/pinocchio-2.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-2.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴 2"></a><a href="menu/pinocchio-3.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-3.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴 3"></a></div>
+        </details>
+        <div class="dz-meal-none" style="--z:var(--fantasy)"><span class="mn">탱글드 트리 태번</span><span class="mz">판타지랜드</span></div>
+        <details class="dz-meal" style="--z:var(--tomorrow)"><summary><span class="mn">스타게이저 그릴</span><span class="mz">투모로우랜드 · 버거</span></summary>
+          <ul>
+            <li>버거: 베이컨 치즈 와규 ¥129 · 치즈 와규 ¥119 · 매운 치킨 ¥109 · 아보카도 채소 ¥99</li>
+            <li>토마호크 돼지갈비 밥 ¥169 · 돈가스 카레라이스 ¥109</li>
+            <li>키즈밀: 미트볼 파스타 ¥55</li>
+            <li>2인 세트 ¥369 · 4인 플래터 ¥459</li>
+          </ul>
+          <div class="mimg"><a href="menu/stargazer-1.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-1.jpg" loading="lazy" alt="스타게이저 그릴 메뉴 1"></a><a href="menu/stargazer-2.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-2.jpg" loading="lazy" alt="스타게이저 그릴 메뉴 2"></a><a href="menu/stargazer-3.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-3.jpg" loading="lazy" alt="스타게이저 그릴 메뉴 3"></a></div>
+        </details>
+        <details class="dz-meal" style="--z:var(--mickey)"><summary><span class="mn">미키와 친구들 마켓 카페</span><span class="mz">미키 애비뉴 · 아시아 음식</span></summary>
+          <ul>
+            <li>코코넛 커리 치킨국수 ¥109 · 해물 락사 ¥109 · 와규 미트볼 스파게티 ¥119 · 강황밥 치킨 ¥109 · 궁보치킨 새우 소시지밥 ¥109 · 마라탕 국수(맵/토마토) ¥99 (음료 포함)</li>
+            <li>키즈밀: 토마토 소고기 양지 밥 ¥55</li>
+            <li>2인 세트 ¥299</li>
+          </ul>
+          <div class="mimg"><a href="menu/mickey-1.jpg" target="_blank" rel="noopener"><img src="menu/mickey-1.jpg" loading="lazy" alt="마켓 카페 메뉴 1"></a><a href="menu/mickey-2.jpg" target="_blank" rel="noopener"><img src="menu/mickey-2.jpg" loading="lazy" alt="마켓 카페 메뉴 2"></a><a href="menu/mickey-3.jpg" target="_blank" rel="noopener"><img src="menu/mickey-3.jpg" loading="lazy" alt="마켓 카페 메뉴 3"></a></div>
+        </details>
+      </div>
+
+      <div class="tip-sec">
         <h4>지도와 동선</h4>
         <p style="margin:0; font-size:12px; color:var(--ink-soft);">두 손가락이나 + − 로 확대 · 빨간 선은 대략적인 경로 · 번호는 아래 하루 동선 순서</p>
         <div class="dz-mapbox">
@@ -1046,19 +1105,6 @@
             <span class="zn">미키 애비뉴</span><h5>기념품 쇼핑 → 17:00경 택시로 숙소 복귀</h5>
           </li>
         </ol>
-      </div>
-
-      <div class="tip-sec">
-        <h4>식사 — 쿠폰 사용 가능 식당</h4>
-        <p style="margin:0 0 6px; font-size:12px; color:var(--ink-soft);">클룩 식사쿠폰 ¥60 × 2 — 아래 지정 식당에서만 사용</p>
-        <ul class="dz-nl" style="padding:2px 0 0;">
-          <li style="--z:var(--treasure)"><b>·</b><div><span class="nm">바보사 바운티</span><span class="ht" style="color:var(--z)">트레저 코브</span></div></li>
-          <li style="--z:var(--adventure)"><b>·</b><div><span class="nm">더피와 친구들의 셀러브레이션 홀</span><span class="ht" style="color:var(--z)">어드벤처 아일</span></div></li>
-          <li style="--z:var(--fantasy)"><b>·</b><div><span class="nm">탱글드 트리 태번</span><span class="ht" style="color:var(--z)">판타지랜드</span></div></li>
-          <li style="--z:var(--fantasy)"><b>·</b><div><span class="nm">피노키오 빌리지 키친</span><span class="ht" style="color:var(--z)">판타지랜드</span></div></li>
-          <li style="--z:var(--tomorrow)"><b>·</b><div><span class="nm">스타게이저 그릴</span><span class="ht" style="color:var(--z)">투모로우랜드</span></div></li>
-          <li style="--z:var(--mickey)"><b>·</b><div><span class="nm">미키와 친구들 마켓 카페</span><span class="ht" style="color:var(--z)">미키 애비뉴</span></div></li>
-        </ul>
       </div>
 
       <div class="tip-sec">
