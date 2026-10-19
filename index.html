@@ -191,6 +191,8 @@
   .meal-btn{ display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 14px; padding: 10px 12px; border-radius: 10px; border: 1px dashed var(--line); background: #FBFAF6; color: var(--ink-soft); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 12.5px; cursor: pointer; }
   .meal-btn svg{ width: 14px; height: 14px; }
   .meal-btn:active{ background: var(--gold-soft); color: var(--ink); }
+  .disney-btn{ margin: 0 0 12px; text-decoration: none; border: 1px solid #CBD4E6; background: #EAEEF7; color: #2E4372; }
+  .disney-btn:active{ background: #DCE3F1; color: #1F2F55; }
 
   /* ---------- MEAL PAGE (slide-over) ---------- */
   .meal-page{ position: fixed; inset: 0; z-index: 50; background: var(--bg); transform: translateX(100%); transition: transform .28s ease; overflow-y: auto; }
@@ -445,6 +447,10 @@
               택시
             </span>
           </div>
+          <a class="meal-btn disney-btn" href="disney.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            디즈니 동선전략
+          </a>
           <div class="weather" data-weather="rainy">
             <span class="weather-icon">🌧️</span><span class="temp">17–19° / 12–14°</span>
             <span class="divider"></span>
@@ -466,10 +472,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v6a2 2 0 0 0 4 0V3M9 9v12M17 3c-1.5 3-1.5 6 0 8v10"/></svg>
             오늘 뭐 먹지?
           </button>
-          <a class="meal-btn" href="disney.html" style="margin-top:8px; text-decoration:none;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            디즈니 동선전략
-          </a>
         </div>
       </div>
 
