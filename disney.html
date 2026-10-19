@@ -32,11 +32,6 @@ a{color:inherit}
 .htitle em{font-style:italic;font-weight:400;color:#F6DDBB}
 .hmeta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:#F5E9D8}
 .hmeta b{font-weight:800;color:#fff}
-/* tabs — same as main page */
-.tabs{position:sticky;top:0;z-index:20;display:flex;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 2px 6px rgba(30,42,38,.05)}
-.tabs button{flex:1;appearance:none;border:0;background:transparent;font-family:var(--font);font-weight:700;font-size:13.5px;color:var(--ink-faint);padding:14px 4px 12px;position:relative;cursor:pointer}
-.tabs button[aria-selected="true"]{color:var(--maple)}
-.tabs button[aria-selected="true"]::after{content:"";position:absolute;left:18%;right:18%;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--maple)}
 main{padding:18px 16px 40px}
 .panel[hidden]{display:none}
 .panel h1{display:flex;align-items:center;gap:10px;margin:8px 4px 6px;font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink)}
@@ -169,6 +164,13 @@ summary:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{o
 .meals-in>.meals{padding:6px 10px 12px}
 .meals-in h3.sub{font-size:14.5px;margin:14px 4px 8px}
 .meals-in h3.sub:first-child{margin-top:4px}
+.fold{margin-top:12px}
+.fold>.fine{margin:0 14px 8px}
+.fold>.todo{padding:0 14px;border-top:1px solid var(--line)}
+.fold>h3.sub{margin:16px 14px 8px}
+.fold>.tbl{border-top:1px solid var(--line)}
+.fold>.tbl+.fine{margin:10px 14px 14px}
+#height>.tbl{margin-bottom:12px}
 
 </style>
 </head>
@@ -181,14 +183,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{o
     <div class="hmeta"><span>지우 105cm · 부모 둘</span><span><b id="dzDone">0</b> / 18 탑승</span></div>
   </div>
 </header>
-<nav class="tabs" role="tablist">
-  <button role="tab" id="t-route" aria-controls="p-route" aria-selected="true">동선</button>
-  <button role="tab" id="t-prep" aria-controls="p-prep" aria-selected="false">준비</button>
-  <button role="tab" id="t-height" aria-controls="p-height" aria-selected="false">키 기준</button>
-</nav>
-
 <main class="wrap">
-  <section class="panel" id="p-route" role="tabpanel" aria-labelledby="t-route">
     <dl class="card facts">
       <div><dt>입장</dt><dd>07:30경 조기입장</dd></div>
       <div><dt>점심</dt><dd>11:00경 판타지랜드 또는 투모로우랜드</dd></div>
@@ -197,6 +192,27 @@ summary:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{o
       <div><dt>DPA</dt><dd>주토피아 3인, 트론 엄마·아빠 따로</dd></div>
     </dl>
     <p class="fine">시각은 개장 08:30을 가정한 것 — 11월 운영시간이 나오면 다시 맞춤</p>
+
+    <details class="allz fold" id="prep">
+      <summary>준비<span class="cnt">공식 디즈니 앱</span></summary>
+<ul class="todo">
+        <li><label><input type="checkbox" data-id="t1"><span><b>클룩 입장권을 공식 앱에 등록</b><small>조기입장과 DPA를 사려면 필요</small></span></label></li>
+        <li><label><input type="checkbox" data-id="t2"><span><b>조기입장 3인<span class="when">전날 구매</span></b><small>¥199 × 3 = ¥597, 약 ₩131,340</small></span></label></li>
+        <li><label><input type="checkbox" data-id="t3"><span><b>DPA 5장<span class="when">당일 구매</span></b><small>¥900, 약 ₩198,000 — 아래 표</small></span></label></li>
+      </ul>
+      <h3 class="sub">DPA 내역</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>어트랙션</th><th class="num">수량</th><th class="num">금액</th></tr></thead>
+          <tbody>
+            <tr><td>주토피아: 핫퍼슈트</td><td class="num">¥180 × 3</td><td class="num">¥540</td></tr>
+            <tr><td>트론 (부모)</td><td class="num">¥180 × 2</td><td class="num">¥360</td></tr>
+            <tr class="total"><td>합계</td><td class="num">5장</td><td class="num">¥900</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">가격은 10월 18일 앱 화면 기준이고 날짜마다 바뀜. 산 날 운영 종료까지 쓸 수 있음. 원화는 ₩220/위안 추정. 외부 음식 반입은 제한됨</p>
+    </details>
 
     <div class="card mapcard">
       <figure class="map" id="dzMap">
@@ -220,41 +236,19 @@ summary:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{o
     <ol class="stops" id="dzTimeline">
       <li class="grp">오전</li><li class="stop" style="--z:#5F6368"><div class="sh"><span class="n">1</span><h3>미키 애비뉴</h3><span class="tm">07:30경</span></div><div class="sb"><p class="note">조기입장. 어디도 들르지 말고 주토피아로</p></div></li><li class="stop" style="--z:#8A5F0E"><div class="sh"><span class="n">2</span><h3>주토피아</h3><span class="pill dpa">DPA</span></div><div class="sb"><p class="note">구역에 들어가는 줄이 따로 있어 제일 먼저</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d1" aria-label="주토피아: 핫퍼슈트 탔음"></label><button type="button" class="rn" data-ride="hotpursuit">주토피아: 핫퍼슈트</button></li></ul></div></li><li class="stop" style="--z:#55632C"><div class="sh"><span class="n">3</span><h3>어드벤처 아일</h3></div><div class="sb"><p class="note">주토피아에서 바로. 오후로 갈수록 대기가 길어짐</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d4" aria-label="소어링 오버 더 호라이즌 탔음"></label><button type="button" class="rn" data-ride="soaring">소어링 오버 더 호라이즌</button></li></ul></div></li><li class="stop" style="--z:#2C5DA8"><div class="sh"><span class="n">4</span><h3>트레저 코브</h3></div><div class="sb"><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d6" aria-label="캐리비안의 해적 탔음"></label><button type="button" class="rn" data-ride="pirates">캐리비안의 해적</button></li></ul></div></li><li class="stop" style="--z:#8A3D87"><div class="sh"><span class="n">5</span><h3>판타지랜드</h3></div><div class="sb"><p class="note">세븐 드워프부터. 푸와 피터팬은 한 번에 태우는 인원이 적어 오전에</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d7" aria-label="세븐 드워프 마인 트레인 탔음"></label><button type="button" class="rn" data-ride="sdmt">세븐 드워프 마인 트레인</button></li><li><label class="ck"><input type="checkbox" data-id="d15" aria-label="곰돌이 푸의 모험 탔음"></label><button type="button" class="rn" data-ride="pooh">곰돌이 푸의 모험</button></li><li><label class="ck"><input type="checkbox" data-id="d18" aria-label="허니팟 스핀 탔음"></label><button type="button" class="rn" data-ride="hunny">허니팟 스핀</button></li><li><label class="ck"><input type="checkbox" data-id="d8" aria-label="피터팬의 비행 탔음"></label><button type="button" class="rn" data-ride="peterpan">피터팬의 비행</button></li></ul></div></li><li class="grp">점심</li><li class="stop rest"><div class="sh"><span class="n">6</span><h3>점심</h3><span class="tm">11:00경</span></div><div class="sb"><p class="note">사람이 몰리기 전에. 판타지랜드의 탱글드 트리 태번이나 피노키오 빌리지 키친, 또는 투모로우랜드의 스타게이저 그릴</p><details class="allz meals-in"><summary>쿠폰 식당 6곳<span class="cnt">메뉴판</span></summary><p class="fine">클룩 식사쿠폰 ¥60 두 장은 이 식당들에서만 씀. 키즈밀은 모두 ¥55</p><div class="meals"><h3 class="sub">고려 대상 후보 3</h3><details class="meal" style="--z:#1C6894"><summary><span class="mn">스타게이저 그릴</span><span class="mz">투모로우랜드, 버거</span></summary><ul><li>버거: 베이컨 치즈 와규 ¥129 · 치즈 와규 ¥119 · 매운 치킨 ¥109 · 아보카도 채소 ¥99</li><li>토마호크 돼지갈비 밥 ¥169 · 돈가스 카레라이스 ¥109</li><li>키즈밀: 미트볼 파스타 ¥55</li><li>2인 세트 ¥369 · 4인 플래터 ¥459</li></ul><div class="mimg"><a href="menu/stargazer-1.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-1.jpg" loading="lazy" alt="스타게이저 그릴 메뉴판 1"></a><a href="menu/stargazer-2.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-2.jpg" loading="lazy" alt="스타게이저 그릴 메뉴판 2"></a><a href="menu/stargazer-3.jpg" target="_blank" rel="noopener"><img src="menu/stargazer-3.jpg" loading="lazy" alt="스타게이저 그릴 메뉴판 3"></a></div></details><details class="meal" style="--z:#8A3D87"><summary><span class="mn">탱글드 트리 태번</span><span class="mz">판타지랜드, 구이·덮밥</span></summary><ul><li>철판 소고기 채소 밥 ¥109 · BBQ 소고기 양지 + 옥수수·감자튀김 ¥119 · 돼지고기 롤 흑미밥 ¥109 (음료 포함)</li><li>키즈밀: 미키 계란찜 국수 ¥55</li><li>2인 세트 ¥299 · 패밀리 세트 ¥429</li></ul><div class="mimg"><a href="menu/tangled-1.jpg" target="_blank" rel="noopener"><img src="menu/tangled-1.jpg" loading="lazy" alt="탱글드 트리 태번 메뉴판 1"></a><a href="menu/tangled-2.jpg" target="_blank" rel="noopener"><img src="menu/tangled-2.jpg" loading="lazy" alt="탱글드 트리 태번 메뉴판 2"></a><a href="menu/tangled-3.jpg" target="_blank" rel="noopener"><img src="menu/tangled-3.jpg" loading="lazy" alt="탱글드 트리 태번 메뉴판 3"></a></div></details><details class="meal" style="--z:#8A3D87"><summary><span class="mn">피노키오 빌리지 키친</span><span class="mz">판타지랜드, 피자·파스타</span></summary><ul><li>피자: 곰돌이 푸 햄파인애플 ¥109 · 데리야키 치킨 ¥109 · 소고기 단호박 ¥119 · 오리 ¥109</li><li>크림 베이컨 우동 ¥99 · 매운 해물면 ¥119 · 칠면조다리 볶음밥 ¥119 · 밀라노 돈가스 ¥169 · 전복 차슈볶음밥 ¥109 (음료 포함)</li><li>키즈밀: 토마토 소고기 양지 밥 ¥55</li></ul><div class="mimg"><a href="menu/pinocchio-1.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-1.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴판 1"></a><a href="menu/pinocchio-2.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-2.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴판 2"></a><a href="menu/pinocchio-3.jpg" target="_blank" rel="noopener"><img src="menu/pinocchio-3.jpg" loading="lazy" alt="피노키오 빌리지 키친 메뉴판 3"></a></div></details><h3 class="sub">그 외 가능 식당</h3><details class="meal" style="--z:#2C5DA8"><summary><span class="mn">바보사 바운티</span><span class="mz">트레저 코브, BBQ</span></summary><ul><li>고등어구이 코코넛밥 ¥129 · BBQ 폭립 코코넛밥 ¥139 · XO 새우 버섯밥 ¥109 · 저크 치킨다리 흑미밥 ¥109 · 먹물 해물볶음면 ¥119 (음료 포함)</li><li>키즈밀: 틸라피아 토마토소스 밥 ¥55</li><li>2인 세트 ¥329 · 4인 세트 ¥459</li></ul><div class="mimg"><a href="menu/barbossa-1.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-1.jpg" loading="lazy" alt="바보사 바운티 메뉴판 1"></a><a href="menu/barbossa-2.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-2.jpg" loading="lazy" alt="바보사 바운티 메뉴판 2"></a><a href="menu/barbossa-3.jpg" target="_blank" rel="noopener"><img src="menu/barbossa-3.jpg" loading="lazy" alt="바보사 바운티 메뉴판 3"></a></div></details><details class="meal" style="--z:#55632C"><summary><span class="mn">더피와 친구들의 셀러브레이션 홀</span><span class="mz">어드벤처 아일, 중식</span></summary><ul><li>골라 담는 콤보 ¥119 (메인 1 + 반찬 1 + 음료): 치킨다리 소시지밥 · 트러플 소고기 덮밥 · 랍스터 짜장 도삭면(+¥20) · 코코넛 새우밥 · 해물 리본면</li><li>키즈밀: 생선찜 카레채소 볶음면 ¥55</li><li>수자우육 ¥108 · 생선구이 ¥138 · 4인 세트 ¥459</li></ul><div class="mimg"><a href="menu/duffy-1.jpg" target="_blank" rel="noopener"><img src="menu/duffy-1.jpg" loading="lazy" alt="더피와 친구들의 셀러브레이션 홀 메뉴판 1"></a><a href="menu/duffy-2.jpg" target="_blank" rel="noopener"><img src="menu/duffy-2.jpg" loading="lazy" alt="더피와 친구들의 셀러브레이션 홀 메뉴판 2"></a><a href="menu/duffy-3.jpg" target="_blank" rel="noopener"><img src="menu/duffy-3.jpg" loading="lazy" alt="더피와 친구들의 셀러브레이션 홀 메뉴판 3"></a></div></details><details class="meal" style="--z:#5F6368"><summary><span class="mn">미키와 친구들 마켓 카페</span><span class="mz">미키 애비뉴, 아시아 음식</span></summary><ul><li>코코넛 커리 치킨국수 ¥109 · 해물 락사 ¥109 · 와규 미트볼 스파게티 ¥119 · 강황밥 치킨 ¥109 · 궁보치킨 새우 소시지밥 ¥109 · 마라탕 국수(맵/토마토) ¥99 (음료 포함)</li><li>키즈밀: 토마토 소고기 양지 밥 ¥55</li><li>2인 세트 ¥299</li></ul><div class="mimg"><a href="menu/mickey-1.jpg" target="_blank" rel="noopener"><img src="menu/mickey-1.jpg" loading="lazy" alt="미키와 친구들 마켓 카페 메뉴판 1"></a><a href="menu/mickey-2.jpg" target="_blank" rel="noopener"><img src="menu/mickey-2.jpg" loading="lazy" alt="미키와 친구들 마켓 카페 메뉴판 2"></a><a href="menu/mickey-3.jpg" target="_blank" rel="noopener"><img src="menu/mickey-3.jpg" loading="lazy" alt="미키와 친구들 마켓 카페 메뉴판 3"></a></div></details></div></details></div></li><li class="grp">오후</li><li class="stop" style="--z:#A84F14"><div class="sh"><span class="n">7</span><h3>토이 스토리 랜드</h3><span class="pill dpa">DPA</span></div><div class="sb"><p class="note">아빠가 지우와 우디, 슬링키독을 타는 동안 엄마는 바로 옆 트론</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d20" aria-label="우디의 라운드업 탔음"></label><button type="button" class="rn" data-ride="woody">우디의 라운드업</button></li><li><label class="ck"><input type="checkbox" data-id="d19" aria-label="슬링키독 스핀 탔음"></label><button type="button" class="rn" data-ride="slinky">슬링키독 스핀</button></li><li><label class="ck"><input type="checkbox" data-id="d2" aria-label="트론 라이트사이클 파워런 탔음"></label><button type="button" class="rn" data-ride="tron">트론 라이트사이클 파워런</button><span class="aside mom">엄마</span></li></ul></div></li><li class="stop" style="--z:#1C6894"><div class="sh"><span class="n">8</span><h3>투모로우랜드</h3><span class="pill dpa">DPA</span></div><div class="sb"><p class="note">엄마가 지우와 버즈, 스티치, 픽사를 보고 덤보까지 타는 동안 아빠는 트론</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d10" aria-label="버즈 라이트이어 플래닛 레스큐 탔음"></label><button type="button" class="rn" data-ride="buzz">버즈 라이트이어 플래닛 레스큐</button></li><li><label class="ck"><input type="checkbox" data-id="d11" aria-label="스페이스 챗 위드 스티치 탔음"></label><button type="button" class="rn" data-ride="stitch">스페이스 챗 위드 스티치</button></li><li><label class="ck"><input type="checkbox" data-id="d23" aria-label="픽사 어드벤처러스 저니 탔음"></label><button type="button" class="rn" data-ride="pixar">픽사 어드벤처러스 저니</button></li><li><label class="ck"><input type="checkbox" data-id="d25" aria-label="트론 라이트사이클 파워런 탔음"></label><button type="button" class="rn" data-ride="tron">트론 라이트사이클 파워런</button><span class="aside dad">아빠</span></li></ul></div></li><li class="stop" style="--z:#2E7049"><div class="sh"><span class="n">9</span><h3>가든스 오브 이매지네이션</h3></div><div class="sb"><p class="note">덤보는 엄마와 지우. 아빠는 트론 타고 여기서 합류</p><ul class="rides"><li><label class="ck"><input type="checkbox" data-id="d12" aria-label="덤보 탔음"></label><button type="button" class="rn" data-ride="dumbo">덤보</button></li><li><label class="ck"><input type="checkbox" data-id="d21" aria-label="판타지아 캐러셀 탔음"></label><button type="button" class="rn" data-ride="carousel">판타지아 캐러셀</button><span class="aside opt">줄 짧을 때만</span></li><li><label class="ck"><input type="checkbox" data-id="d24" aria-label="비컴 아이언맨 탔음"></label><button type="button" class="rn" data-ride="ironman">비컴 아이언맨</button><span class="aside opt">줄 짧을 때만</span></li><li><label class="ck"><input type="checkbox" data-id="d26" aria-label="나오는 길에 성 들어가보기 탔음"></label><button type="button" class="rn" data-ride="castle">나오는 길에 성 들어가보기</button><span class="aside opt">시간 되면</span></li></ul></div></li><li class="stop" style="--z:#5F6368"><div class="sh"><span class="n">10</span><h3>미키 애비뉴</h3><span class="tm">17:00경</span></div><div class="sb"><p class="note">기념품은 토이 스토리 또는 주토피아 피규어. 쇼핑 후 택시로 숙소</p></div></li>
     </ol>
-  </section>
 
-  <section class="panel" id="p-prep" role="tabpanel" aria-labelledby="t-prep" hidden>
-    <h1>준비</h1>
-    <p class="lede">공식 디즈니 앱에서</p>
-    <ul class="card todo">
-      <li><label><input type="checkbox" data-id="t1"><span><b>클룩 입장권을 공식 앱에 등록</b><small>조기입장과 DPA를 사려면 필요</small></span></label></li>
-      <li><label><input type="checkbox" data-id="t2"><span><b>조기입장 3인<span class="when">전날 구매</span></b><small>¥199 × 3 = ¥597, 약 ₩131,340</small></span></label></li>
-      <li><label><input type="checkbox" data-id="t3"><span><b>DPA 5장<span class="when">당일 구매</span></b><small>¥900, 약 ₩198,000 — 아래 표</small></span></label></li>
-    </ul>
-    <h2>DPA 내역</h2>
-    <div class="card">
-      <table>
-        <thead><tr><th>어트랙션</th><th class="num">수량</th><th class="num">금액</th></tr></thead>
-        <tbody>
-          <tr><td>주토피아: 핫퍼슈트</td><td class="num">¥180 × 3</td><td class="num">¥540</td></tr>
-          <tr><td>트론 (부모)</td><td class="num">¥180 × 2</td><td class="num">¥360</td></tr>
-          <tr class="total"><td>합계</td><td class="num">5장</td><td class="num">¥900</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="fine">가격은 10월 18일 앱 화면 기준이고 날짜마다 바뀜. 산 날 운영 종료까지 쓸 수 있음. 원화는 ₩220/위안 추정. 외부 음식 반입은 제한됨</p>
-  </section>
+    <details class="allz fold" id="height">
+      <summary>키 제한<span class="cnt">지우 105cm</span></summary>
+      <p class="fine">트론만 부모가 한 명씩 타고, 키가 안 되는 나머지는 패스</p>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>어트랙션</th><th class="num">기준</th><th class="num">지우</th></tr></thead>
+          <tbody><tr><td><button type="button" class="rl" data-ride="tron">트론 라이트사이클 파워런</button><span class="z">투모로우랜드</span></td><td class="num">122cm</td><td class="v"><span class="vp warn">부모만</span></td></tr><tr><td><button type="button" class="rl" data-ride="rex">렉스 레이서</button><span class="z">토이 스토리 랜드</span></td><td class="num">120cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="jetpacks">제트팩</button><span class="z">투모로우랜드</span></td><td class="num">112cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="roaring">로어링 래피즈</button><span class="z">어드벤처 아일</span></td><td class="num">107cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="challenge">챌린지 트레일스</button><span class="z">어드벤처 아일</span></td><td class="num">106cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="soaring">소어링 오버 더 호라이즌</button><span class="z">어드벤처 아일</span></td><td class="num">102cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="sdmt">세븐 드워프 마인 트레인</button><span class="z">판타지랜드</span></td><td class="num">97cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="hotpursuit">주토피아: 핫퍼슈트</button><span class="z">주토피아</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="pirates">캐리비안의 해적</button><span class="z">트레저 코브</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="peterpan">피터팬의 비행</button><span class="z">판타지랜드</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="woody">우디의 라운드업</button><span class="z">토이 스토리 랜드</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr></tbody>
+        </table>
+      </div>
+      <p class="fine">상하이 디즈니 공식 사이트 어트랙션 목록 기준. 바뀔 수 있으니 입구 안내판으로 확인</p>
+    </details>
 
-  <section class="panel" id="p-height" role="tabpanel" aria-labelledby="t-height" hidden>
-    <h1>지우 105cm 키 기준</h1>
-    <p class="lede">트론만 부모가 한 명씩 타고, 키가 안 되는 나머지는 패스</p>
-    <div class="card">
-      <table>
-        <thead><tr><th>어트랙션</th><th class="num">기준</th><th class="num">지우</th></tr></thead>
-        <tbody><tr><td><button type="button" class="rl" data-ride="tron">트론 라이트사이클 파워런</button><span class="z">투모로우랜드</span></td><td class="num">122cm</td><td class="v"><span class="vp warn">부모만</span></td></tr><tr><td><button type="button" class="rl" data-ride="rex">렉스 레이서</button><span class="z">토이 스토리 랜드</span></td><td class="num">120cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="jetpacks">제트팩</button><span class="z">투모로우랜드</span></td><td class="num">112cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="roaring">로어링 래피즈</button><span class="z">어드벤처 아일</span></td><td class="num">107cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="challenge">챌린지 트레일스</button><span class="z">어드벤처 아일</span></td><td class="num">106cm</td><td class="v"><span class="vp muted">패스</span></td></tr><tr><td><button type="button" class="rl" data-ride="soaring">소어링 오버 더 호라이즌</button><span class="z">어드벤처 아일</span></td><td class="num">102cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="sdmt">세븐 드워프 마인 트레인</button><span class="z">판타지랜드</span></td><td class="num">97cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="hotpursuit">주토피아: 핫퍼슈트</button><span class="z">주토피아</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="pirates">캐리비안의 해적</button><span class="z">트레저 코브</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="peterpan">피터팬의 비행</button><span class="z">판타지랜드</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr><tr><td><button type="button" class="rl" data-ride="woody">우디의 라운드업</button><span class="z">토이 스토리 랜드</span></td><td class="num">81cm</td><td class="v"><span class="vp ok">탐</span></td></tr></tbody>
-      </table>
-    </div>
-    <p class="fine">상하이 디즈니 공식 사이트 어트랙션 목록 기준. 바뀔 수 있으니 입구 안내판으로 확인</p>
-  </section>
 </main>
 
 <div class="rd-bg" id="rdModal" hidden>
@@ -285,15 +279,8 @@ var RIDES={"hotpursuit": {"n": "주토피아: 핫퍼슈트", "z": "주토피아"
   boxes.forEach(function(b){b.checked=!!st[b.dataset.id];b.addEventListener('change',function(){var s=load();s[b.dataset.id]=b.checked;save(s);count();})});
   count();
 
-  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
-  var names={route:'t-route',meal:'t-route',prep:'t-prep',height:'t-height'};
-  function show(id,push){
-    tabs.forEach(function(t){var on=t.id===id;t.setAttribute('aria-selected',on);document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
-    var key=id.slice(2);
-    if(push){history.replaceState(null,'','#'+key);window.scrollTo(0,0);}
-  }
-  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.id,true)})});
-  var h=location.hash.slice(1); if(names[h]) show(names[h],false);
+  var h=document.getElementById(location.hash.slice(1));
+  if(h&&h.tagName==='DETAILS'){h.open=true;h.scrollIntoView();}
 
   var box=document.getElementById('dzMap'),svg=box.querySelector('svg'),lbl=document.getElementById('dzZl'),s=1;
   function apply(ns,cx,cy){ns=Math.max(1,Math.min(4,ns));if(cx==null){cx=box.clientWidth/2;cy=box.clientHeight/2;}
