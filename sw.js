@@ -1,7 +1,7 @@
 // 오프라인 대비 캐시
 // 기내·지하철 등 통신이 끊기는 구간에서도 일정이 열리도록 합니다.
 // 온라인이면 항상 최신을 받아오고, 통신이 끊겼을 때만 캐시된 일정을 보여줍니다.
-var CACHE = 'sh2026-v10';
+var CACHE = 'sh2026-v11';
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
