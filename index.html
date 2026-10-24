@@ -334,6 +334,8 @@
 
 <div class="tabbar">
   <button class="tab active" data-tab="itinerary">일정</button>
+  <button class="tab" data-tab="route">동선</button>
+  <button class="tab" data-tab="meals">식사</button>
   <button class="tab" data-tab="budget">비용</button>
   <button class="tab" data-tab="booking">예약사항</button>
 </div>
@@ -518,6 +520,68 @@
 
     </div>
 
+  </section>
+
+  <!-- ============ 동선 TAB ============ -->
+  <section class="tab-panel" id="tab-route">
+    <div class="map-card">
+      <p class="map-title">상하이 시내 동선</p>
+      <svg viewBox="0 0 380 200" width="100%" style="display:block; height:auto;">
+        <!-- 한국(인천)은 대략적인 방향만 표시 (상하이 기준 북동쪽, 왕복 모두 인천) -->
+        <line x1="352" y1="20" x2="336" y2="118" stroke="#9AA79F" stroke-width="1.5" stroke-dasharray="3,4"/>
+        <text x="286" y="16" font-family="Manrope" font-size="10" font-weight="700" fill="#64756E">인천 ICN ↔</text>
+
+        <!-- 공항↔호텔 (항공/셔틀 구간, 왕복 모두 푸동) -->
+        <line x1="336" y1="128" x2="140" y2="62" stroke="#AD4C3C" stroke-width="2" stroke-dasharray="5,5"/>
+
+        <!-- 호텔↔일자별 목적지 (시내 이동) -->
+        <line x1="140" y1="62" x2="95" y2="30" stroke="#B3893F" stroke-width="2" stroke-dasharray="4,4"/>
+        <line x1="140" y1="62" x2="205" y2="188" stroke="#B3893F" stroke-width="2" stroke-dasharray="4,4"/>
+        <line x1="140" y1="62" x2="270" y2="168" stroke="#B3893F" stroke-width="2" stroke-dasharray="4,4"/>
+        <line x1="140" y1="62" x2="158" y2="96" stroke="#B3893F" stroke-width="2" stroke-dasharray="4,4"/>
+
+        <circle cx="336" cy="128" r="5" fill="#4C6B78"/>
+        <circle cx="95" cy="30" r="5" fill="#B3893F"/>
+        <circle cx="205" cy="188" r="5" fill="#B3893F"/>
+        <circle cx="270" cy="168" r="5" fill="#B3893F"/>
+        <circle cx="158" cy="96" r="5" fill="#B3893F"/>
+        <circle cx="140" cy="62" r="7" fill="#AD4C3C"/>
+
+        <text x="150" y="58" font-family="Manrope" font-size="11.5" font-weight="800" fill="#1E2A26">하얏트 온더번드</text>
+        <text x="372" y="146" text-anchor="end" font-family="Manrope" font-size="10.5" font-weight="700" fill="#1E2A26">푸동공항(PVG) 왕복</text>
+        <text x="6" y="22" font-family="Manrope" font-size="10.5" font-weight="700" fill="#1E2A26">1000trees·박물관</text>
+        <text x="150" y="192" text-anchor="end" font-family="Manrope" font-size="10.5" font-weight="700" fill="#1E2A26">야생동물원</text>
+        <text x="230" y="163" font-family="Manrope" font-size="10.5" font-weight="700" fill="#1E2A26">디즈니랜드</text>
+        <text x="163" y="93" font-family="Manrope" font-size="10.5" font-weight="700" fill="#1E2A26">신천지</text>
+      </svg>
+      <div class="map-legend">
+        <span><span class="legend-line dashed" style="border-top-color:var(--maple);"></span> 공항↔호텔</span>
+        <span><span class="legend-line dashed" style="border-top-color:var(--gold);"></span> 호텔↔시내 관광지</span>
+      </div>
+    </div>
+
+    <div class="route-list">
+      <div class="route-step">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-8 20-3-8-9-4z"/></svg></div>
+        <div class="txt"><b>인천 → 상하이(푸동)</b><span>KE887 · 11.7(토) 11:10 → 12:35</span></div>
+      </div>
+      <div class="route-step">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-8 20-3-8-9-4z"/></svg></div>
+        <div class="txt"><b>상하이(푸동) → 인천</b><span>KE888 · 11.10(화) 14:00 → 17:10</span></div>
+      </div>
+    </div>
+
+    <p class="map-title" style="margin-top:36px;">일자별 상세 동선</p>
+    <div class="map-legend" style="margin:0 8px 4px;">
+      <span><span class="legend-line dashed" style="border-top-color:var(--maple);"></span> 항공</span>
+      <span><span class="legend-line dashed" style="border-top-color:var(--gold);"></span> 택시 · 셔틀</span>
+    </div>
+    <div id="dailyRouteList"></div>
+  </section>
+
+  <!-- ============ 식사 TAB ============ -->
+  <section class="tab-panel" id="tab-meals">
+    <div id="mealsAll"></div>
   </section>
 
   <!-- ============ 비용 TAB ============ -->
@@ -832,6 +896,30 @@
     document.body.style.overflow = '';
   }
 
+  // 식사 탭 — 전체 일자
+  const MEAL_DAYS = [
+    { k:'day1', n:'Day 01', t:'11.7 (토) · 상하이' },
+    { k:'day2', n:'Day 02', t:'11.8 (일) · 상하이' },
+    { k:'day3', n:'Day 03', t:'11.9 (월) · 디즈니' },
+    { k:'day4', n:'Day 04', t:'11.10 (화) · 상하이 → 인천' }
+  ];
+  function renderMealsTab(){
+    const host = document.getElementById('mealsAll');
+    if (!host) return;
+    host.innerHTML = MEAL_DAYS.map(function(d){
+      const m = mealData[d.k] || {};
+      const row = function(label, entry){
+        return '<div class="mealday-row"><span class="k">' + label + '</span>' +
+               '<div class="v">' + mealSlotHTML(entry, '미정') + '</div></div>';
+      };
+      return '<div class="mealday">' +
+             '<div class="mealday-head"><span class="d">' + d.n + '</span><span class="t">' + d.t + '</span></div>' +
+             row('아침', m.b) + row('점심', m.l) + row('저녁', m.d) +
+             '</div>';
+    }).join('');
+  }
+  renderMealsTab();
+
   // 오늘의 일정
   function initTodayCard(){
     const now = new Date();
@@ -1051,6 +1139,77 @@
     document.getElementById('packModal').classList.remove('open');
     document.body.style.overflow = '';
   }
+
+  // 일자별 상세 동선 (미니 경로도)
+  const routeIcons = {
+    transit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4l-9 9h4v7h10v-7h4z"/></svg>',
+    plane: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-8 20-3-8-9-4z"/></svg>'
+  };
+  // 개요 지도(상하이 시내 동선)와 같은 좌표계를 재사용한 스키매틱 좌표 (실측 지도 아님)
+  const GEO = {
+    '상하이 푸동공항(PVG)': [336,128],
+    '하얏트 온더번드': [140,62],
+    '난징둥루': [150,78],
+    '상하이자연사박물관': [108,42],
+    '1000 Trees': [78,18],
+    '818광장 (양꼬치)': [96,64],
+    '상하이 야생동물원': [205,188],
+    '점도덕 태양궁점': [166,40],
+    'HOXA Bistro (사미빌딩)': [156,70],
+    '캉다오 발마사지 (난징둥루)': [148,80],
+    '홍쿠이지아 (진링둥루)': [136,92],
+    '와이탄(번드)': [160,56],
+    '상하이 디즈니랜드': [270,168],
+    '그랜마 레스토랑 (난징둥루)': [146,78],
+    '산둥잡곡전병 (광시베이루)': [128,82],
+    '신천지': [150,104]
+  };
+  function geoLookup(label){
+    if (GEO[label]) return GEO[label];
+    const stripped = label.replace(/\s*\([^)]*\)\s*$/, '').trim();
+    return GEO[stripped] || null;
+  }
+  function miniRouteMapSVG(stops){
+    const pts = stops.map(geoLookup).filter(Boolean);
+    if (pts.length < 2) return '';
+    let path = '', dots = '', labels = '';
+    pts.forEach((p, i) => {
+      if (i > 0) path += `<line x1="${pts[i-1][0]}" y1="${pts[i-1][1]}" x2="${p[0]}" y2="${p[1]}" stroke="#B3893F" stroke-width="2" stroke-dasharray="4,4"/>`;
+    });
+    pts.forEach((p, i) => {
+      dots += `<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="${i === 0 ? '#AD4C3C' : '#B3893F'}"/>`;
+      labels += `<text x="${p[0]}" y="${p[1] - 9}" text-anchor="middle" font-family="Manrope" font-size="9" font-weight="800" fill="#1E2A26">${i + 1}</text>`;
+    });
+    return `<svg viewBox="0 0 380 200" width="100%" style="display:block; height:auto; margin-bottom:12px;">${path}${dots}${labels}</svg>`;
+  }
+  const dayRouteData = [
+    { day:'Day 01', date:'11.7(토)', stops:['상하이 푸동공항(PVG)','하얏트 온더번드','난징둥루 (점심 · 마라반·딤섬)','상하이자연사박물관','1000 Trees','818광장 (양꼬치)','하얏트 온더번드 (복귀)'],
+      connectors:[{icon:'transit',text:'공항 프라이빗셔틀'},{icon:'transit',text:'도보 약 15분 또는 택시'},{icon:'transit',text:'택시'},{icon:'transit',text:'택시'},{icon:'transit',text:'택시'},{icon:'transit',text:'택시'}] },
+    { day:'Day 02', date:'11.8(일)', stops:['하얏트 온더번드','상하이 야생동물원','점도덕 태양궁점','HOXA Bistro (사미빌딩)','캉다오 발마사지 (난징둥루)','홍쿠이지아 (진링둥루)','와이탄(번드)','하얏트 온더번드 (복귀)'],
+      connectors:[{icon:'transit',text:'택시 · 09:00 오픈런'},{icon:'transit',text:'택시 · 늦은 점심'},{icon:'transit',text:'택시 · 테라스 사진'},{icon:'transit',text:'도보'},{icon:'transit',text:'택시 · 늦은 저녁'},{icon:'transit',text:'야경'},{icon:'transit',text:'도보'}] },
+    { day:'Day 03', date:'11.9(월)', stops:['하얏트 온더번드','상하이 디즈니랜드','그랜마 레스토랑 (난징둥루)','하얏트 온더번드 (복귀)'],
+      connectors:[{icon:'transit',text:'택시 · 06:30'},{icon:'transit',text:'택시 · 17:00 출발'},{icon:'transit',text:'난징둥루 구경 · 도보'}] },
+    { day:'Day 04', date:'11.10(화)', stops:['하얏트 온더번드','산둥잡곡전병 (광시베이루)','신천지 (시간되면)','하얏트 온더번드 (10:45 복귀)','상하이 푸동공항(PVG)'],
+      connectors:[{icon:'transit',text:'택시 · 08:00 체크아웃'},{icon:'transit',text:'택시'},{icon:'transit',text:'택시 · 이른 점심 후'},{icon:'transit',text:'공항 프라이빗셔틀 · 11:00 픽업'}] }
+  ];
+  function renderDailyRoutes(){
+    const container = document.getElementById('dailyRouteList');
+    let html = '';
+    dayRouteData.forEach(d => {
+      let drd = '<div class="drd">';
+      d.stops.forEach((stop, i) => {
+        const q = encodeURIComponent(stop);
+        drd += `<div class="drd-stop"><span class="dot"></span><a class="label" href="https://uri.amap.com/search?keyword=${q}&city=上海" target="_blank" rel="noopener">${stop}</a></div>`;
+        if (d.connectors[i]){
+          drd += `<div class="drd-connector">${routeIcons[d.connectors[i].icon]}<span>${d.connectors[i].text}</span></div>`;
+        }
+      });
+      drd += '</div>';
+      html += `<div class="daily-route-card"><div class="daily-route-head"><span class="d-day">${d.day}</span><span class="d-date">${d.date}</span></div>${miniRouteMapSVG(d.stops)}${drd}</div>`;
+    });
+    container.innerHTML = html;
+  }
+  renderDailyRoutes();
 
   // 오프라인 대비: 한 번이라도 온라인으로 열어두면 통신이 끊겨도 일정이 열립니다
   if ('serviceWorker' in navigator){
