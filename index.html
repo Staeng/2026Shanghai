@@ -665,6 +665,11 @@
   <!-- ============ 예약사항 TAB ============ -->
   <section class="tab-panel" id="tab-booking">
 
+    <button class="pack-btn" onclick="openEntry()" style="margin-bottom:12px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      입국서류
+    </button>
+
     <div class="booking-group">
       <div class="segment-label" style="margin-top:0;"><span class="dot"></span>항공<span class="rule"></span></div>
 
@@ -858,6 +863,34 @@
 
 
 
+
+<div class="tip-modal" id="entryModal" onclick="if(event.target===this) closeEntry()">
+  <div class="tip-sheet">
+    <div class="tip-head">
+      <h3>입국서류</h3>
+      <div class="tip-close" onclick="closeEntry()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </div>
+    </div>
+    <div class="tip-body">
+      <div class="booking-card">
+        <div class="booking-card-head">
+          <div>
+            <div class="booking-title">중국 온라인 입국카드</div>
+            <div class="booking-sub">외국인 입경 신고 회집(外国人入境填报回执) · 국가이민관리국</div>
+          </div>
+        </div>
+        <div class="booking-rows">
+          <div class="booking-row"><span class="k">대상</span><span class="v">아빠 · 엄마 · 지우 (3명)</span></div>
+          <div class="booking-row"><span class="k">작성일</span><span class="v">11.6(금) · 작성 완료</span></div>
+          <div class="booking-row"><span class="k">입경</span><span class="v">11.7(토) · 상하이 푸동</span></div>
+          <div class="booking-row"><span class="k">QR</span><span class="v">휴대폰에 저장한 PDF (1인 1장)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tip-foot"><button onclick="closeEntry()">닫기</button></div>
+  </div>
+</div>
 
 <footer>
   <p>2026 SHANGHAI (2nd) · 개인 여행 일정표</p>
@@ -1183,6 +1216,14 @@
   }
   function closePack(){
     document.getElementById('packModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openEntry(){
+    document.getElementById('entryModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeEntry(){
+    document.getElementById('entryModal').classList.remove('open');
     document.body.style.overflow = '';
   }
 
