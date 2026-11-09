@@ -475,9 +475,9 @@
             <li><span class="t">17:00</span>디즈니 출발 · 택시로 식당</li>
             <li class="warn"><span class="t">17:00</span>디즈니 출발하면서 따종디엔핑으로 그랜마 웨이팅 걸기</li>
             <li>저녁 · 그랜마 레스토랑 (난징둥루 · 마파두부·홍소육)</li>
-            <li>도보로 난징둥루 구경 → 헤이티(喜茶) 신완중신(新丸中心)점</li>
+            <li>도보로 난징둥루 구경</li>
             <li>도보로 숙소</li>
-            <li>야식 · 점도덕(点都德) 딤섬 + 양쯔깐루(杨枝甘露) 배달</li>
+            <li>야식 · 점도덕(点都德) + 헤이티(喜茶) 배달</li>
           </ul>
           <button class="meal-btn" onclick="openMeal('day3','11.9 (월) · 디즈니')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v6a2 2 0 0 0 4 0V3M9 9v12M17 3c-1.5 3-1.5 6 0 8v10"/></svg>
@@ -596,7 +596,7 @@
 
     <div class="budget-summary">
       <div class="total-label">총 예산</div>
-      <div class="total-amount">₩ 3,706,438</div>
+      <div class="total-amount">₩ 3,651,438</div>
       <div class="split">
         <div>
           <div class="k">지출완료</div>
@@ -604,7 +604,7 @@
         </div>
         <div>
           <div class="k">지출예정</div>
-          <div class="v planned">₩ 225,000</div>
+          <div class="v planned">₩ 170,000</div>
         </div>
       </div>
     </div>
@@ -657,10 +657,9 @@
       <div class="cost-row"><div class="cost-label">간식 · 팝콘 (ODV 카트)<small><b>CNY 48 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩9,600</div></div>
       <div class="cost-row"><div class="cost-label">기념품 · 露露精品店<small><b>CNY 262 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩52,400</div></div>
       <div class="cost-row"><div class="cost-label">디즈니 안 결제<small>上海国际主题乐园 · <b>CNY 14 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩2,800</div></div>
-      <div class="cost-row"><div class="cost-label">美团 2건<small>¥88.10 + ¥30 · <b>CNY 118.10 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩23,620</div></div>
       <div class="cost-row"><div class="cost-label">저녁 · 마파두부·홍소육(그랜마 레스토랑)</div><div class="cost-amount planned">₩50,000</div></div>
-      <div class="cost-row"><div class="cost-label">음료 · 헤이티(喜茶)<small>3잔 추정</small></div><div class="cost-amount planned">₩15,000</div></div>
-      <div class="cost-row"><div class="cost-label">야식 · 점도덕 배달 + 양쯔깐루<small>추정</small></div><div class="cost-amount planned">₩40,000</div></div>
+      <div class="cost-row"><div class="cost-label">야식 · 헤이티(喜茶) 배달<small>美团 · <b>CNY 30 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩6,000</div></div>
+      <div class="cost-row"><div class="cost-label">야식 · 점도덕 배달<small>美团 · <b>CNY 88.10 실지출</b> · 원화 ₩200/위안 추정</small></div><div class="cost-amount paid">₩17,620</div></div>
     </div>
 
     <div class="budget-day">
@@ -963,8 +962,8 @@
       l: "디즈니 내 식사 (식사쿠폰 ¥60 × 2)",
       d: [
         { name: "마파두부·홍소육 (그랜마 레스토랑)", place: "上海姥姥家常饭馆, 南京东路, 上海", desc: "₩50,000 예정 · 4.0★(853)" },
-        { name: "헤이티(喜茶) 신완중신(新丸中心) 1층", place: "喜茶 新世界新丸中心店, 南京东路228号, 上海", desc: "밀크티 · 10:00-22:00 · 숙소 가는 길 · ₩15,000 예정" },
-        { name: "야식 · 점도덕(点都德) 배달 + 양쯔깐루(杨枝甘露)", place: "点都德, 上海", desc: "숙소에서 배달 · ₩40,000 예정" }
+        { name: "야식 · 점도덕(点都德) 배달", place: "点都德, 上海", desc: "美团 배달 · ¥88.10" },
+        { name: "야식 · 헤이티(喜茶) 배달", place: "喜茶, 上海", desc: "美团 배달 · ¥30" }
       ]
     },
     day4: {
@@ -1310,8 +1309,8 @@
       connectors:[{icon:'transit',text:'리무진 (Travel Butler)'},{icon:'transit',text:'디디 · 17:00'},{icon:'transit',text:'택시'},{icon:'transit',text:'택시'}] },
     { day:'Day 02', date:'11.8(일)', stops:['하얏트 온더번드','상하이자연사박물관','장씨네 (저장중루)','미니소랜드 (난징둥루)','도원향 1호점 (난징둥루)','대호춘 (쓰촨중루)','상하이 해양수족관','홍쿠이지아 (진링둥루)','하얏트 온더번드 (복귀)'],
       connectors:[{icon:'transit',text:'택시 · 08:30'},{icon:'transit',text:'택시 · 점심'},{icon:'transit',text:'도보'},{icon:'transit',text:'도보 · 13:00 마사지'},{icon:'transit',text:'도보 · 간식'},{icon:'transit',text:'택시 · 15:00'},{icon:'transit',text:'택시 · 저녁'},{icon:'transit',text:'택시'}] },
-    { day:'Day 03', date:'11.9(월)', stops:['하얏트 온더번드','상하이 디즈니랜드','그랜마 레스토랑 (난징둥루)','헤이티 (新丸中心)','하얏트 온더번드 (복귀)'],
-      connectors:[{icon:'transit',text:'택시 · 06:30'},{icon:'transit',text:'택시 · 17:00 출발'},{icon:'transit',text:'난징둥루 구경 · 도보'},{icon:'transit',text:'도보'}] },
+    { day:'Day 03', date:'11.9(월)', stops:['하얏트 온더번드','상하이 디즈니랜드','그랜마 레스토랑 (난징둥루)','하얏트 온더번드 (복귀)'],
+      connectors:[{icon:'transit',text:'택시 · 06:30'},{icon:'transit',text:'택시'},{icon:'transit',text:'도보'}] },
     { day:'Day 04', date:'11.10(화)', stops:['하얏트 온더번드 (조식·체크아웃)','난징둥루','산둥잡곡전병 (광시베이루)','하얏트 온더번드 (10:45 복귀)','상하이 푸동공항(PVG)'],
       connectors:[{icon:'transit',text:'도보'},{icon:'transit',text:'도보 · 아점'},{icon:'transit',text:'택시'},{icon:'transit',text:'리무진 (Travel Butler) · 11:00 픽업'}] }
   ];
